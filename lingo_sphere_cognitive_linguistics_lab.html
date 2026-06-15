@@ -1,0 +1,3020 @@
+<!DOCTYPE html>
+<html lang="uz" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingo-Sphere: Cognitive Linguistics Lab — Interaktiv Test Platformasi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+        }
+        .dark body {
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 50%, #030712 100%);
+        }
+        /* Custom scrollbar matching premium iOS/HyperOS metallic style */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.3);
+            border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(71, 85, 105, 0.5);
+        }
+        
+        /* Premium Watermark matching standard metadata */
+        .watermark-bg {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'><text fill='rgba(100, 116, 139, 0.02)' font-size='10' font-family='sans-serif' x='20' y='120' transform='rotate(-30 20 120)'>@yomonboIa | @yovvoyiroq</text></svg>");
+        }
+        .dark .watermark-bg {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'><text fill='rgba(255, 255, 255, 0.015)' font-size='10' font-family='sans-serif' x='20' y='120' transform='rotate(-30 20 120)'>@yomonboIa | @yovvoyiroq</text></svg>");
+        }
+
+        /* Glassmorphism Styles (Frosted High-Transparency iOS 26 style) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.04);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Shining Glass Effect Keyframes */
+        @keyframes sweep {
+            0% { left: -150%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
+        }
+        .shining-glass {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .shining-glass {
+            background: rgba(15, 23, 42, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.3);
+        }
+        .shining-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.75) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-25deg);
+            animation: sweep 3.5s infinite ease-in-out;
+        }
+
+        @keyframes scaleUp {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-scale-up {
+            animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col watermark-bg transition-colors duration-500 overflow-x-hidden text-slate-800">
+
+    <header class="sticky top-0 z-40 bg-white/40 dark:bg-slate-950/30 backdrop-blur-md border-b border-white/50 dark:border-slate-900/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            
+            <!-- Logo & Brand Name -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/75 dark:bg-slate-900/50 rounded-2xl flex items-center justify-center border border-white/60 dark:border-slate-800 text-slate-700 dark:text-slate-300 shadow-sm">
+                    <i class="fa-solid fa-brain text-lg text-indigo-500 animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="text-xs sm:text-sm md:text-base font-black tracking-tight text-slate-800 dark:text-white leading-tight">Lingo-Sphere: Cognitive Linguistics</h1>
+                    <p class="text-[9px] sm:text-[10px] font-bold text-slate-500 dark:text-slate-400">Interaktiv Test Platformasi • 200+ Savol</p>
+                </div>
+            </div>
+
+            <!-- Premium Navigation Actions -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Glowing Telegram Channel Link button with Shining Glass Effect -->
+                <a href="https://t.me/yovvoyiroq" target="_blank" class="shining-glass inline-flex items-center gap-1.5 px-3 py-2 text-slate-800 dark:text-white rounded-2xl text-[10px] sm:text-xs font-extrabold transition-all duration-200 active:scale-95">
+                    <i class="fa-brands fa-telegram text-sm text-sky-500"></i>
+                    <span>Kanal: <span class="text-indigo-600 dark:text-indigo-400">@yovvoyiroq</span></span>
+                </a>
+
+                <!-- Theme Toggle -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center bg-white/50 dark:bg-slate-900/40 border border-white/40 dark:border-slate-800/40 hover:bg-white/70 dark:hover:bg-slate-800/60 rounded-2xl text-slate-600 dark:text-slate-300 transition-all duration-200 active:scale-90">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- FLOATING CORNER CONTACT BADGE -->
+    <div class="fixed bottom-4 right-4 z-50 opacity-80 hover:opacity-100 transition-all duration-200">
+        <a href="https://t.me/yomonboIa" target="_blank" class="glass-panel px-4 py-2.5 rounded-full text-[11px] font-extrabold text-slate-700 dark:text-slate-300 flex items-center gap-2 shadow-lg border border-white/45 hover:scale-105 transition-all">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse"></span>
+            <span>Aloqa: @yomonboIa</span>
+        </a>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-6 relative">
+
+        <!-- LEFT SIDEBAR -->
+        <section class="w-full lg:w-80 flex flex-col gap-5 shrink-0">
+            
+            <!-- PROGRESS & STATISTICS -->
+            <div class="glass-panel rounded-3xl p-5 transition-all duration-300">
+                <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3.5 flex items-center justify-between">
+                    <span>O'zlashtirish tahlili</span>
+                    <i class="fa-solid fa-chart-line text-slate-400"></i>
+                </h2>
+                
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="bg-emerald-500/5 dark:bg-emerald-500/10 p-3 rounded-2xl border border-emerald-500/10 dark:border-emerald-500/20 text-center">
+                        <p class="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold uppercase">To'g'ri</p>
+                        <p id="correctCountText" class="text-xl font-black text-emerald-600 dark:text-emerald-400">0</p>
+                    </div>
+                    <div class="bg-rose-500/5 dark:bg-rose-500/10 p-3 rounded-2xl border border-rose-500/10 dark:border-rose-500/20 text-center">
+                        <p class="text-[9px] text-rose-600 dark:text-rose-400 font-extrabold uppercase">Xato</p>
+                        <p id="wrongCountText" class="text-xl font-black text-rose-600 dark:text-rose-400">0</p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div>
+                    <div class="flex justify-between text-xs font-extrabold text-slate-600 dark:text-slate-300 mb-1.5">
+                        <span>O'zlashtirilgan foiz:</span>
+                        <span id="progressBarPercentage" class="font-black text-indigo-600 dark:text-indigo-400">0%</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden border border-white/40">
+                        <div id="progressBarFill" class="h-full bg-slate-700 dark:bg-slate-200 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 font-bold mt-2.5">
+                        <span id="answeredRatioText">Bajarildi: 0 / 230</span>
+                        <span id="bookmarkCountText">Tanlanganlar: 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VOCABULARY GROWTH TREE (Futuristic SVG Interaction) -->
+            <div class="glass-panel rounded-3xl p-5 transition-all duration-300 flex flex-col gap-2">
+                <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 flex items-center justify-between">
+                    <span>Linguistic Growth Tree</span>
+                    <i class="fa-solid fa-seedling text-emerald-500"></i>
+                </h2>
+                <p class="text-[9px] text-slate-500">To'g'ri javob berganingiz sayin kognitiv daraxtingiz o'sib, yangi barglar bilan yashillashib boradi:</p>
+                <div class="h-32 bg-slate-950/5 dark:bg-slate-950/20 rounded-2xl flex items-center justify-center border border-white/10 relative overflow-hidden">
+                    <svg id="vocabTreeSvg" class="w-28 h-28" viewBox="0 0 100 100">
+                        <!-- Trunk -->
+                        <path d="M50 90 L50 65" stroke="#8B5A2B" stroke-width="6" stroke-linecap="round"></path>
+                        <!-- Primary Branches -->
+                        <path d="M50 70 Q35 60 30 45" stroke="#8B5A2B" stroke-width="4" stroke-linecap="round" fill="none"></path>
+                        <path d="M50 70 Q65 60 70 45" stroke="#8B5A2B" stroke-width="4" stroke-linecap="round" fill="none"></path>
+                        <path d="M50 65 L50 40" stroke="#8B5A2B" stroke-width="4" stroke-linecap="round" fill="none"></path>
+                        <!-- Dynamic Leaves Group (Manipulated by JS) -->
+                        <g id="treeLeavesGroup">
+                            <circle cx="30" cy="45" r="4" fill="#cbd5e1" class="transition-all duration-500"></circle>
+                            <circle cx="70" cy="45" r="4" fill="#cbd5e1" class="transition-all duration-500"></circle>
+                            <circle cx="50" cy="40" r="4" fill="#cbd5e1" class="transition-all duration-500"></circle>
+                            <circle cx="20" cy="35" r="4" fill="#cbd5e1" class="transition-all duration-500"></circle>
+                            <circle cx="80" cy="35" r="4" fill="#cbd5e1" class="transition-all duration-500"></circle>
+                            <circle cx="50" cy="25" r="4" fill="#cbd5e1" class="transition-all duration-500"></circle>
+                        </g>
+                    </svg>
+                    <div id="treeStatusText" class="absolute bottom-2 text-[9px] font-bold text-slate-500 uppercase">Ko'chat holatida</div>
+                </div>
+            </div>
+
+            <!-- CONTROLS & CONFIGURATION -->
+            <div class="glass-panel rounded-3xl p-5 transition-all duration-300 flex flex-col gap-4">
+                <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 flex items-center justify-between">
+                    <span>Sozlamalar</span>
+                    <i class="fa-solid fa-sliders text-slate-400"></i>
+                </h2>
+
+                <!-- Mode Switcher -->
+                <div class="flex bg-slate-200/50 dark:bg-slate-900/50 p-1 rounded-2xl border border-white/20 dark:border-slate-850">
+                    <button id="modeStudyBtn" onclick="changeQuizMode('study')" class="flex-1 py-2 text-xs font-black rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                        O'rganish
+                    </button>
+                    <button id="modeExamBtn" onclick="changeQuizMode('exam')" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all duration-300 text-slate-500 dark:text-slate-400">
+                        Imtihon
+                    </button>
+                </div>
+
+                <!-- Exam Timer -->
+                <div id="examTimerContainer" class="hidden">
+                    <div class="bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/20 rounded-2xl p-3 flex items-center justify-between text-rose-700 dark:text-rose-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-hourglass-half animate-spin text-xs"></i>
+                            <span class="text-xs font-black uppercase">Qolgan vaqt:</span>
+                        </div>
+                        <span id="examTimerText" class="font-mono text-sm font-black">60:00</span>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div>
+                    <label class="block text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Mavzular filtri:</label>
+                    <select id="categoryFilter" onchange="filterQuestions()" class="w-full bg-white/50 dark:bg-slate-900/40 border border-white/35 dark:border-slate-800/40 rounded-xl p-2.5 text-xs font-extrabold focus:outline-none focus:ring-1 focus:ring-indigo-400 text-slate-700 dark:text-slate-300">
+                        <option value="all">Barcha mavzular (200 ta savol)</option>
+                        <option value="intro">Introduction & Personality</option>
+                        <option value="career">Career & Dream Jobs</option>
+                        <option value="academic">Academic Life & Reading</option>
+                        <option value="media">Films, Music & Social Media</option>
+                        <option value="lifestyle">Healthy Lifestyle & Medicine</option>
+                        <option value="culture">Athletes, Travel & Celebrations</option>
+                        <option value="future">Technology & Future Imaginations</option>
+                        <option value="growth">Public Speaking & Environment</option>
+                        <option value="bookmarked">Saqlangan qiyin savollar (★)</option>
+                    </select>
+                </div>
+
+                <!-- Search Input -->
+                <div>
+                    <label class="block text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Savollardan izlash:</label>
+                    <div class="relative">
+                        <input id="searchInput" oninput="filterQuestions()" type="text" placeholder="Kalit so'zni yozing..." class="w-full bg-white/50 dark:bg-slate-900/40 border border-white/35 dark:border-slate-800/40 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-400 text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-[11px] text-slate-400"></i>
+                    </div>
+                </div>
+
+                <!-- Reset and Shuffle Controls -->
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="shuffleCurrentQuestions()" class="p-2.5 bg-white/40 hover:bg-white/70 dark:bg-slate-900/30 dark:hover:bg-slate-800/40 border border-white/30 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-shuffle text-[10px]"></i>
+                        Aralashtirish
+                    </button>
+                    <button onclick="resetQuizState()" class="p-2.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-arrow-rotate-left text-[10px]"></i>
+                        Tozalash
+                    </button>
+                </div>
+            </div>
+
+            <!-- QUESTIONS NAVIGATION MAP -->
+            <div class="glass-panel rounded-3xl p-5 transition-all duration-300 flex flex-col flex-1 min-h-[220px] lg:max-h-[350px]">
+                <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3 flex items-center justify-between">
+                    <span>Savollar xaritasi</span>
+                    <span id="filteredCountBadge" class="text-[10px] bg-slate-200 dark:bg-slate-800 px-2.5 py-0.5 rounded-full font-black text-slate-600 dark:text-slate-300">230/230</span>
+                </h2>
+                
+                <div id="questionsMapContainer" class="grid grid-cols-5 sm:grid-cols-10 lg:grid-cols-5 gap-1.5 overflow-y-auto flex-1 pr-1 custom-scrollbar">
+                    <!-- Dynamic indicators injected here -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- RIGHT WORKPLACE -->
+        <section class="flex-1 flex flex-col lg:flex-row gap-5">
+            
+            <!-- LEFT COLUMN: ACTIVE TEST COMPONENT -->
+            <div class="flex-1 flex flex-col gap-5 min-w-0">
+                <!-- CURRENT QUESTION CONTAINER -->
+                <div class="glass-panel rounded-[32px] p-6 sm:p-8 transition-all duration-300 flex flex-col gap-6 relative overflow-hidden">
+                    <div class="absolute inset-0 watermark-bg opacity-[0.05] pointer-events-none"></div>
+
+                    <!-- Question Header -->
+                    <div class="flex items-center justify-between gap-3 z-10">
+                        <div class="flex items-center gap-2">
+                            <span id="questionIndexBadge" class="px-3.5 py-1 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 text-xs font-black rounded-full">SAVOL 1</span>
+                            <span id="questionSourceBadge" class="px-3.5 py-1 bg-white/50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 text-[10px] font-bold rounded-full max-w-[150px] sm:max-w-[300px] truncate border border-white/20">Mavzu</span>
+                        </div>
+                        <button id="bookmarkBtn" onclick="toggleBookmarkActiveQuestion()" class="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-white/50 dark:hover:bg-slate-800/40 text-slate-400 dark:text-slate-500 transition-all active:scale-90">
+                            <i class="fa-solid fa-star text-base"></i>
+                        </button>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div class="z-10">
+                        <h3 id="questionTextDisplay" class="text-sm sm:text-base font-extrabold text-slate-850 dark:text-white leading-relaxed bg-white/35 dark:bg-slate-900/20 p-4 rounded-2xl border border-white/35 dark:border-slate-800/50">
+                            ...
+                        </h3>
+                    </div>
+
+                    <!-- Options List Container -->
+                    <div id="optionsListContainer" class="flex flex-col gap-3 z-10">
+                        <!-- Dynamic shuffled options will be loaded here -->
+                    </div>
+
+                    <!-- Navigation Controls -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/25 dark:border-slate-850 pt-5 mt-4 z-10">
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <button id="prevBtn" onclick="navigateToQuestion(-1)" class="flex-1 sm:flex-initial px-5 py-3 border border-white/30 dark:border-slate-800 rounded-xl hover:bg-white/40 dark:hover:bg-slate-800/30 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all text-slate-700 dark:text-slate-300">
+                                <i class="fa-solid fa-arrow-left"></i> Oldingisi
+                            </button>
+                            <button id="nextBtn" onclick="navigateToQuestion(1)" class="flex-1 sm:flex-initial px-5 py-3 bg-white/60 dark:bg-slate-800/40 hover:bg-white/80 dark:hover:bg-slate-850/55 border border-white/45 dark:border-slate-800 text-slate-850 dark:text-white font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all">
+                                Keyingisi <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Finish Exam Action -->
+                        <div class="w-full sm:w-auto flex justify-end">
+                            <button id="examSubmitBtn" onclick="finishExamPrompt()" class="hidden w-full sm:w-auto px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-black text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-all animate-pulse">
+                                <i class="fa-solid fa-square-check"></i> Imtihonni topshirish
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- EXPLANATION VIEW CARD (Study Mode Only) -->
+                <div id="explanationCard" class="bg-white/30 dark:bg-slate-900/10 border border-white/40 dark:border-slate-800/40 rounded-[32px] p-6 sm:p-8 shadow-sm transition-all duration-300 flex flex-col gap-3">
+                    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-circle-info text-base text-indigo-500 dark:text-indigo-400"></i>
+                        <h4 class="text-xs font-black uppercase tracking-wider">Metodik tahlil va yechim</h4>
+                    </div>
+                    <div class="bg-white/40 dark:bg-slate-900/40 rounded-2xl p-4 border border-white/40 dark:border-slate-800/50">
+                        <p id="explanationTextDisplay" class="text-xs sm:text-sm font-semibold italic text-slate-700 dark:text-slate-300 leading-relaxed">
+                            ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: INTEGRATED INTERACTIVE COGNITIVE SCRATCHPAD (WHITEBOARD) -->
+            <div class="w-full lg:w-96 flex flex-col gap-5 shrink-0">
+                
+                <!-- COGNITIVE SCRATCHPAD -->
+                <div class="glass-panel rounded-[32px] p-5 flex flex-col gap-3 flex-1">
+                    <div class="flex items-center justify-between border-b border-white/20 pb-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-pen-nib text-indigo-500"></i>
+                            <span class="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-300">Linguistic Whiteboard</span>
+                        </div>
+                        <button onclick="clearScratchpad()" class="text-[9px] px-2 py-1 bg-rose-500/10 text-rose-500 rounded-lg hover:bg-rose-500/20 font-bold transition-all">
+                            Tozalash
+                        </button>
+                    </div>
+
+                    <!-- Canvas Board -->
+                    <div class="relative flex-1 min-h-[220px] bg-white/40 dark:bg-slate-900/30 border border-slate-300/30 dark:border-slate-800/40 rounded-2xl overflow-hidden cursor-crosshair">
+                        <canvas id="scratchpadCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                        <div id="scratchpadHint" class="absolute inset-0 flex items-center justify-center pointer-events-none text-slate-400 text-[10px] font-semibold text-center p-4">
+                            Sujet chizmalari, aruz ruknlari yoki baytlarni yozib ko'rish uchun sichqoncha bilan yozing...
+                        </div>
+                    </div>
+
+                    <!-- Brush Configuration -->
+                    <div class="flex items-center justify-between gap-3 text-[10px] font-bold text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <span>Qalam:</span>
+                            <div class="flex gap-1">
+                                <button onclick="setScratchpadColor('#6366f1')" class="w-4 h-4 rounded-full bg-indigo-500 border border-white/30"></button>
+                                <button onclick="setScratchpadColor('#10b981')" class="w-4 h-4 rounded-full bg-emerald-500 border border-white/30"></button>
+                                <button onclick="setScratchpadColor('#ef4444')" class="w-4 h-4 rounded-full bg-rose-500 border border-white/30"></button>
+                                <button id="eraseColorBtn" onclick="setScratchpadColor('eraser')" class="w-4 h-4 rounded flex items-center justify-center bg-slate-200 border border-white/30"><i class="fa-solid fa-eraser text-[8px] text-slate-600"></i></button>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span>Qalinlik:</span>
+                            <input type="range" id="brushSizeSlider" min="1" max="10" value="3" class="w-16 h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RESULT MODAL -->
+    <div id="examResultModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel border border-white/40 dark:border-slate-800 rounded-[32px] max-w-lg w-full overflow-hidden shadow-2xl animate-scale-up">
+            
+            <div class="p-6 sm:p-8 flex flex-col items-center text-center border-b border-white/20 dark:border-slate-850">
+                <div class="w-16 h-16 bg-white/20 dark:bg-slate-900/40 text-slate-850 dark:text-white border border-white/30 dark:border-slate-800 rounded-full flex items-center justify-center text-2xl mb-4">
+                    <i class="fa-solid fa-graduation-cap animate-bounce text-indigo-500 dark:text-indigo-400"></i>
+                </div>
+                <h3 class="text-xl font-black text-slate-900 dark:text-white">Imtihon Yakunlandi!</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-bold">Linguistics fanidan test tahlili.</p>
+
+                <!-- Numerical Statistics -->
+                <div class="my-6 grid grid-cols-3 gap-3 w-full">
+                    <div class="bg-white/40 dark:bg-slate-900/30 p-3.5 rounded-2xl text-center border border-white/20 dark:border-slate-800">
+                        <p class="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase">Yechildi</p>
+                        <p id="modalTotalAnswered" class="text-sm font-black text-slate-800 dark:text-white">0</p>
+                    </div>
+                    <div class="bg-emerald-500/10 p-3.5 rounded-2xl text-center border border-emerald-500/20">
+                        <p class="text-[9px] font-black text-emerald-500 uppercase">To'g'ri</p>
+                        <p id="modalCorrect" class="text-sm font-black text-emerald-600 dark:text-emerald-400">0</p>
+                    </div>
+                    <div class="bg-rose-500/10 p-3.5 rounded-2xl text-center border border-rose-500/20">
+                        <p class="text-[9px] font-black text-rose-500 uppercase">Noto'g'ri</p>
+                        <p id="modalIncorrect" class="text-sm font-black text-rose-600 dark:text-rose-400">0</p>
+                    </div>
+                </div>
+
+                <!-- Horizontal Percent Bar -->
+                <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-3 mb-2 overflow-hidden border border-white/20">
+                    <div id="modalPercentBar" class="h-full bg-slate-800 dark:bg-slate-200 rounded-full" style="width: 0%"></div>
+                </div>
+                <p id="modalPercentText" class="text-xs font-black text-slate-800 dark:text-white">Ko'rsatkich: 0%</p>
+                <p id="modalGradeText" class="text-[11px] font-bold text-slate-500 dark:text-slate-400 mt-3 px-2 leading-relaxed"></p>
+            </div>
+
+            <div class="p-4 bg-white/20 dark:bg-slate-950/40 flex flex-col gap-2">
+                <button onclick="reviewExamAnswers()" class="w-full py-3 bg-slate-900 hover:bg-black dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 font-extrabold text-xs rounded-2xl transition-all shadow-sm">
+                    Xatolarni tahlil qilish (O'rganish rejimida)
+                </button>
+                <button onclick="closeModalAndReset()" class="w-full py-3 bg-white/40 hover:bg-white/60 dark:bg-slate-900/40 dark:hover:bg-slate-800/40 text-slate-800 dark:text-slate-300 border border-white/20 dark:border-slate-800 font-bold text-[10px] rounded-2xl transition-all">
+                    Qayta boshlash
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const rawQuestionsData = [
+            {
+                id: 1,
+                q: "Which phrase is most suitable when introducing yourself in a formal situation?",
+                answer: "Allow me to introduce myself",
+                options: ["Nice seeing you again", "Allow me to introduce myself", "Catch you later", "What's going on?"],
+                explain: "Rasm muloqotda o'zini tanishtirishning eng mos va odobli shakli 'Allow me to introduce myself' (O'zimni tanishtirishga ruxsat bering) hisoblanadi.",
+                cat: "intro"
+            },
+            {
+                id: 2,
+                q: "The idiom 'break the ice' means:",
+                answer: "To make people feel more comfortable in a social situation",
+                options: ["To solve a difficult problem", "To make people feel more comfortable in a social situation", "To end a friendship", "To change the topic"],
+                explain: "Ushbu ibora muloqot boshidagi noqulay va jimgina muhitni tarqatib, odamlar o'rtasida samimiylik yaratishni anglatadi.",
+                cat: "intro"
+            },
+            {
+                id: 3,
+                q: "Which adjective describes someone who enjoys meeting new people?",
+                answer: "Outgoing",
+                options: ["Reserved", "Reliable", "Outgoing", "Sensitive"],
+                explain: "Yangi odamlar bilan uchrashishni va muloqot qilishni yaxshi ko'radigan ochiqko'ngil, kirishimli shaxs 'outgoing' deyiladi.",
+                cat: "intro"
+            },
+            {
+                id: 4,
+                q: "Complete the sentence: 'I usually _ well with my classmates.'",
+                answer: "Get along",
+                options: ["Take on", "Bring up", "Get along", "Look over"],
+                explain: "'Get along with' iborasi biron kimsa (masalan, sinfdoshlar) bilan yaxshi chiqishish, samimiy munosabatda bo'lishni bildiradi.",
+                cat: "intro"
+            },
+            {
+                id: 5,
+                q: "Which word best completes the sentence? 'One of my greatest _ is my ability to communicate effectively.'",
+                answer: "Strengths",
+                options: ["Weaknesses", "Opportunities", "Habits", "Strengths"],
+                explain: "Insonning eng kuchli va ijobiy jihati, qobiliyati ingliz tilida 'strength' (kuchli tomon) deb ataladi.",
+                cat: "intro"
+            },
+            {
+                id: 6,
+                q: "A person who can be trusted to do things well is:",
+                answer: "Reliable",
+                options: ["Ambitious", "Generous", "Reliable", "Creative"],
+                explain: "O'z ishini mukammal va vaqtida bajaradigan, ishonchli hamda sodiq shaxs 'reliable' (ishonchli) deb ta'riflanadi.",
+                cat: "intro"
+            },
+            {
+                id: 7,
+                q: "Which phrase is often used to describe your personality?",
+                answer: "I would describe myself as...",
+                options: ["On second thought", "I would describe myself as...", "At the end of the day", "For instance"],
+                explain: "O'z shaxsiyati va xulq-atvorini ta'riflash uchun 'I would describe myself as...' (O'zimni ... deb ta'riflagan bo'lardim) iborasi ishlatiladi.",
+                cat: "intro"
+            },
+            {
+                id: 8,
+                q: "Someone who is willing to try new ideas is:",
+                answer: "Open-minded",
+                options: ["Stubborn", "Impatient", "Open-minded", "Careless"],
+                explain: "Yangi g'oyalar, qarashlar va fikrlarni qabul qilishga tayyor bo'lgan keng dunyoqarashli shaxs 'open-minded' deyiladi.",
+                cat: "intro"
+            },
+            {
+                id: 9,
+                q: "Which word is closest in meaning to 'confident'?",
+                answer: "Self-assured",
+                options: ["Nervous", "Shy", "Self-assured", "Uncertain"],
+                explain: "O'ziga ishongan, qat'iyatli va dadil shaxs 'self-assured' yoki 'confident' so'zlari bilan sinonim tarzda ifodalanadi.",
+                cat: "intro"
+            },
+            {
+                id: 10,
+                q: "'Take after' means:",
+                answer: "Resemble a family member",
+                options: ["Follow someone physically", "Look for someone", "Care for someone", "Resemble a family member"],
+                explain: "Tashqi ko'rinishi yoki xulqi bilan oila a'zolaridan biriga o'xshashlik 'take after' (o'xshamoq) frazeologizmi bilan beriladi.",
+                cat: "intro"
+            },
+            {
+                id: 11,
+                q: "Which word refers to a person's profession?",
+                answer: "Career",
+                options: ["Hobby", "Duty", "Career", "Schedule"],
+                explain: "Insonning professional faoliyati, mehnat yo'li va kasbiy yuksalishi 'career' (karyera) deb ataladi.",
+                cat: "career"
+            },
+            {
+                id: 12,
+                q: "Which phrase means 'to be promoted to a higher position'?",
+                answer: "Move up the career ladder",
+                options: ["Fall behind", "Turn around", "Move up the career ladder", "Run out of"],
+                explain: "Ish faoliyatida yuqori lavozimlarga ko'tarilish va muvaffaqiyat qozonish 'move up the career ladder' (karyera pillapoyasidan ko'tarilish) deyiladi.",
+                cat: "career"
+            },
+            {
+                id: 13,
+                q: "An entrepreneur is someone who:",
+                answer: "Starts and runs a business",
+                options: ["Teaches at a university", "Works for the government", "Manages a hospital", "Starts and runs a business"],
+                explain: "Mustaqil ravishda o'z biznesini boshlaydigan, tashabbuskor va sarmoyador shaxs 'entrepreneur' (tadbirkor) deb ataladi.",
+                cat: "career"
+            },
+            {
+                id: 14,
+                q: "Complete the sentence: 'I am looking forward _ working in this field.'",
+                answer: "To",
+                options: ["For", "At", "On", "To"],
+                explain: "'Look forward to' iborasi o'zidan keyin har doim gerundiy (ing-forma) oladi va biron hodisani intizorlik bilan kutishni anglatadi.",
+                cat: "career"
+            },
+            {
+                id: 15,
+                q: "Which quality do employers usually value most?",
+                answer: "Responsibility",
+                options: ["Laziness", "Dishonesty", "Responsibility", "Impatience"],
+                explain: "Ish beruvchilar va kompaniya rahbarlari xodimlarda eng ko'p qadrlaydigan hislat bu — mas'uliyat (responsibility) sanaladi.",
+                cat: "career"
+            },
+            {
+                id: 16,
+                q: "The idiom 'be snowed under' means:",
+                answer: "Have too much work to do",
+                options: ["Travel in winter", "Have too much work to do", "Lose your job", "Work outdoors"],
+                explain: "Haddan tashqari ko'p ish yoki topshiriqlar bilan band bo'lish, ulgurmaslik holati 'be snowed under' iborasi bilan ifodalanadi.",
+                cat: "career"
+            },
+            {
+                id: 17,
+                q: "Which word means a strong desire to succeed?",
+                answer: "Ambition",
+                options: ["Hesitation", "Confusion", "Patience", "Ambition"],
+                explain: "Muvaffaqiyatga erishish, g'alaba qozonish va yuksak natijalarni qayd etishga bo'lgan kuchli intilish 'ambition' (shon-shuhratparastlik, intilish) deyiladi.",
+                cat: "career"
+            },
+            {
+                id: 18,
+                q: "Which phrasal verb means 'reject an offer'?",
+                answer: "Turn down",
+                options: ["Put off", "Carry on", "Turn down", "Bring up"],
+                explain: "Biron-bir taklif yoki kelishuvni rad etish, rad javobini berish 'turn down' fe'li yordamida beriladi.",
+                cat: "career"
+            },
+            {
+                id: 19,
+                q: "Job satisfaction refers to:",
+                answer: "Feeling happy with your job",
+                options: ["A high salary only", "Long holidays", "Feeling happy with your job", "Working fewer hours"],
+                explain: "Insonning o'z qilayotgan mehnatidan ruhan qoniqish hosil qilishi va xursand bo'lishi 'job satisfaction' (ishdan qoniqish) deb ataladi.",
+                cat: "career"
+            },
+            {
+                id: 20,
+                q: "Complete the sentence: 'My dream job would allow me to _ a positive impact on society.'",
+                answer: "Make",
+                options: ["Do", "Give", "Take", "Make"],
+                explain: "Jamiyat yoki atrof-muhitga ijobiy ta'sir ko'rsatish kollokatsiyasi har doim 'make' fe'li bilan birikadi: 'make a positive impact'.",
+                cat: "career"
+            },
+            {
+                id: 21,
+                q: "The idiom 'hit the books' means:",
+                answer: "Study seriously",
+                options: ["Buy textbooks", "Organize books", "Study seriously", "Write a book"],
+                explain: "Imtihon yoki sinovlar oldidan o'ta qattiq va jiddiy dars tayyorlashni boshlash 'hit the books' iborasi orqali beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 22,
+                q: "A student who performs exceptionally well is called a:",
+                answer: "High achiever",
+                options: ["Dropout", "Newcomer", "Volunteer", "High achiever"],
+                explain: "O'zining a'lo baholari, faolligi va yuksak natijalari bilan ajralib turadigan o'quvchi 'high achiever' (yuqori natijali) deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 23,
+                q: "Which word refers to the ability to organize your study time effectively?",
+                answer: "Time management",
+                options: ["Distraction", "Procrastination", "Time management", "Hesitation"],
+                explain: "O'quv va hayotiy vaqtni to'g'ri taqsimlash va rejalashtirish san'ati 'time management' (vaqtni boshqarish) deb ataladi.",
+                cat: "academic"
+            },
+            {
+                id: 24,
+                q: "'Pull an all-nighter' means:",
+                answer: "Stay awake all night studying or working",
+                options: ["Attend a night class", "Wake up early", "Stay awake all night studying or working", "Miss a class"],
+                explain: "Dars tayyorlash yoki muhim loyihani tugatish maqsadida tuni bilan uxlamasdan mehnat qilish 'pull an all-nighter' deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 25,
+                q: "Complete the sentence: 'Many students struggle _ meeting assignment deadlines.'",
+                answer: "With",
+                options: ["From", "At", "With", "By"],
+                explain: "Biron-bir qiyinchilik yoki muammoga duch kelish, kurashish 'struggle with' iborasi yordamida beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 26,
+                q: "Which phrasal verb means 'submit an assignment'?",
+                answer: "Hand in",
+                options: ["Put off", "Look after", "Take over", "Hand in"],
+                explain: "Vazifa yoki uy ishlarini tekshirish uchun o'qituvchiga topshirish 'hand in' (topshirmoq) fe'li bilan beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 27,
+                q: "A scholarship is:",
+                answer: "Financial support for education",
+                options: ["A timetable", "A student club", "Financial support for education", "An entrance exam"],
+                explain: "Iqtidorli talabalar uchun ta'lim xarajatlarini qoplash maqsadida beriladigan moliyaviy grant 'scholarship' (stipendiya) deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 28,
+                q: "The idiom 'a piece of cake' means:",
+                answer: "Something very easy",
+                options: ["Something expensive", "Something unexpected", "Something very easy", "Something delicious"],
+                explain: "Haddan tashqari oson, bajarish qiyinchilik tug'dirmaydigan vazifa 'a piece of cake' (oson ish) iborasi bilan ifodalanadi.",
+                cat: "academic"
+            },
+            {
+                id: 29,
+                q: "Which phrase best completes the sentence? 'If you miss several classes, it can be difficult to _ your classmates.'",
+                answer: "Keep up with",
+                options: ["Run into", "Put up with", "Keep up with", "Look down on"],
+                explain: "Darslarni o'zlashtirishda tengdoshlari bilan bir xil darajada yetib olish, orqada qolmaslik 'keep up with' iborasi yordamida beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 30,
+                q: "Which word best describes a student who regularly delays doing work?",
+                answer: "Procrastinating",
+                options: ["Hardworking", "Organized", "Motivated", "Procrastinating"],
+                explain: "Vazifalarni doimiy ravishda keyinga surib, dangasalik qiladigan shaxs 'procrastinating' (ishni kechiktiruvchi) deb ta'riflanadi.",
+                cat: "academic"
+            },
+            {
+                id: 31,
+                q: "Reading regularly can help students _ their vocabulary.",
+                answer: "Build up",
+                options: ["Give up", "Turn off", "Build up", "Take away"],
+                explain: "Doimiy mutolaa qilish so'z boyligini asta-sekin oshirishga va boyitishga ('build up vocabulary') yordam beradi.",
+                cat: "academic"
+            },
+            {
+                id: 32,
+                q: "Which word best describes a person who reads for pleasure every day?",
+                answer: "Avid",
+                options: ["Reluctant", "Avid", "Careless", "Temporary"],
+                explain: "Kitob o'qishga o'ta qiziqadigan, mutolaasiz yashay olmaydigan ashaddiy kitobxon 'avid reader' deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 33,
+                q: "The phrase 'read between the lines' means:",
+                answer: "Understand the hidden meaning",
+                options: ["Read very quickly", "Skip difficult parts", "Understand the hidden meaning", "Read aloud"],
+                explain: "Yozilgan matnning tagidagi yashirin, ko'chma yoki ramziy ma'noni to'g'ri anglash 'read between the lines' deb ataladi.",
+                cat: "academic"
+            },
+            {
+                id: 34,
+                q: "Which word refers to the main character in a story?",
+                answer: "Protagonist",
+                options: ["Editor", "Narrator", "Protagonist", "Audience"],
+                explain: "Badiiy asar, doston yoki hikoyadagi ijobiy markaziy qahramon adabiyotshunoslikda 'protagonist' deb ataladi.",
+                cat: "academic"
+            },
+            {
+                id: 35,
+                q: "Complete the sentence: 'I couldn't put the book _ because it was so exciting.'",
+                answer: "Down",
+                options: ["Up", "Off", "Down", "Away"],
+                explain: "'Put down' kitobni qo'ldan qo'yishni anglatadi. Uni inkor shakli bilan ishlatsa, kitob o'ta qiziqarli bo'lganidan qo'ldan qo'ya olmaslik tushuniladi.",
+                cat: "academic"
+            },
+            {
+                id: 36,
+                q: "A book that is difficult to stop reading is often called:",
+                answer: "Gripping",
+                options: ["Predictable", "Gripping", "Ordinary", "Brief"],
+                explain: "Inson e'tiborini butunlay o'ziga tortadigan, o'ta jozibador va qiziqarli asar 'gripping' (hayajonli) deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 37,
+                q: "Which phrase means 'to become completely involved in a book'?",
+                answer: "Get lost in a book",
+                options: ["Turn over a new leaf", "Get lost in a book", "Call it a day", "Break the ice"],
+                explain: "Kitobning qiziqarli voqeligiga butunlay berilib ketib, atrofni unutish 'get lost in a book' iborasi bilan beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 38,
+                q: "Which word is closest in meaning to 'plot'?",
+                answer: "Storyline",
+                options: ["Setting", "Character", "Storyline", "Chapter"],
+                explain: "Asar voqealarining mantiqiy rivoji va ketma-ketlik chizig'i 'plot' yoki 'storyline' (syujet) deb ataladi.",
+                cat: "academic"
+            },
+            {
+                id: 39,
+                q: "The idiom 'turn over a new leaf' means:",
+                answer: "Make a fresh start",
+                options: ["Read another chapter", "Buy a new book", "Make a fresh start", "Change a page"],
+                explain: "O'tmishdagi xatolarni ununib, hayotda yangidan, toza sahifadan boshlash 'turn over a new leaf' deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 40,
+                q: "A person who writes books is called:",
+                answer: "Author",
+                options: ["Publisher", "Journalist", "Author", "Reviewer"],
+                explain: "Kitob yoki badiiy asar yozgan ijodkor, muallif 'author' (yozuvchi) deb nomlanadi.",
+                cat: "academic"
+            },
+            {
+                id: 41,
+                q: "A film that receives excellent reviews is often described as:",
+                answer: "Critically acclaimed",
+                options: ["Disappointing", "Critically acclaimed", "Predictable", "Outdated"],
+                explain: "Kino mutaxassislari va tanqidchilari tomonidan yuksak baholangan film 'critically acclaimed' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 42,
+                q: "Which word refers to the music used in a film?",
+                answer: "Soundtrack",
+                options: ["Script", "Scene", "Soundtrack", "Trailer"],
+                explain: "Film yoki sahna ko'rinishlari uchun maxsus bastalangan musiqiy to'plam 'soundtrack' deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 43,
+                q: "The phrase 'steal the show' means:",
+                answer: "Receive the most attention and praise",
+                options: ["Leave early", "Forget your role", "Receive the most attention and praise", "Cause a problem"],
+                explain: "O'zining ajoyib chiqishi bilan barchaning e'tiborini va olqishini qozonish 'steal the show' iborasi orqali beriladi.",
+                cat: "media"
+            },
+            {
+                id: 44,
+                q: "Which person is responsible for making a film?",
+                answer: "Director",
+                options: ["Actor", "Audience", "Director", "Reporter"],
+                explain: "Filmning umumiy badiiy va texnik g'oyasini hayotga tatbiq etuvchi rejissyor 'director' deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 45,
+                q: "Complete the sentence: 'The movie lived _ my expectations.'",
+                answer: "Up to",
+                options: ["On", "For", "Up to", "Into"],
+                explain: "'Live up to expectations' iborasi insonning umid va ishonchlarini oqlash, kutganidek chiqishini bildiradi.",
+                cat: "media"
+            },
+            {
+                id: 46,
+                q: "A performance that keeps people interested from beginning to end is:",
+                answer: "Engaging",
+                options: ["Confusing", "Engaging", "Ordinary", "Silent"],
+                explain: "Tomoshabinni o'ziga jalb qiluvchi va unda katta qiziqish uyg'otuvchi sahna chiqishi 'engaging' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 47,
+                q: "Which word refers to the written text of a film?",
+                answer: "Script",
+                options: ["Review", "Poster", "Script", "Genre"],
+                explain: "Film yoki teatr namoyishining yozma ravishdagi matni va qahramonlar dialoglari 'script' (ssenariy) deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 48,
+                q: "The idiom 'in the spotlight' means:",
+                answer: "Receiving public attention",
+                options: ["Behind the scenes", "In trouble", "Receiving public attention", "Feeling nervous"],
+                explain: "Barchaning e'tiborida bo'lish, ommaviy axborot va jamoatchilik diqqat markazida turish 'in the spotlight' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 49,
+                q: "Which genre usually includes suspense and mystery?",
+                answer: "Thriller",
+                options: ["Comedy", "Documentary", "Thriller", "Musical"],
+                explain: "Sirli voqealar va kuchli hayajon, qo'rquvga asoslangan kino janri 'thriller' (triller) deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 50,
+                q: "Which phrase means 'to perform in a play or film'?",
+                answer: "Act in",
+                options: ["Take off", "Bring up", "Act in", "Look after"],
+                explain: "Kino yoki teatr asarida qahramon rolini ijro etish 'act in' iborasi orqali ifodalanadi.",
+                cat: "media"
+            },
+            {
+                id: 51,
+                q: "Which word best describes a song that is easy to remember?",
+                answer: "Catchy",
+                options: ["Complicated", "Catchy", "Ancient", "Formal"],
+                explain: "Tezda yodda qoladigan, jozibador va quvnoq ohang 'catchy' (esda qoluvchi) deb ta'riflanadi.",
+                cat: "media"
+            },
+            {
+                id: 52,
+                q: "The phrase 'know a song by heart' means:",
+                answer: "Know all the words from memory",
+                options: ["Like a song", "Write a song", "Know all the words from memory", "Translate a song"],
+                explain: "Musiqaning barcha so'zlarini yoddan bilish, matnini xotirada saqlash 'know by heart' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 53,
+                q: "Which word refers to the words of a song?",
+                answer: "Lyrics",
+                options: ["Rhythm", "Melody", "Lyrics", "Harmony"],
+                explain: "Musiqa matni, uning she'riy so'zlari professional tilda 'lyrics' deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 54,
+                q: "Complete the sentence: 'This song always _ me up when I feel sad.'",
+                answer: "Cheers",
+                options: ["Turns", "Takes", "Cheers", "Brings"],
+                explain: "Xafa bo'lganda inson kayfiyatini ko'tarish, uni xursand qilish iborasi 'cheer up' deb nomlanadi.",
+                cat: "media"
+            },
+            {
+                id: 55,
+                q: "A song that becomes extremely popular is called a:",
+                answer: "Hit",
+                options: ["Chapter", "Hit", "Review", "Scene"],
+                explain: "Chop etilganidan so'ng o'ta ommalashib ketgan musiqiy asar 'hit' deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 56,
+                q: "Which idiom means 'to be very happy'?",
+                answer: "On cloud nine",
+                options: ["Under the weather", "In hot water", "On cloud nine", "Out of the blue"],
+                explain: "O'zini baxtning eng yuqori cho'qqisida his qilish, g'oyat quvonish 'on cloud nine' iborasi bilan ifodalanadi.",
+                cat: "media"
+            },
+            {
+                id: 57,
+                q: "Which word refers to the speed of music?",
+                answer: "Tempo",
+                options: ["Verse", "Tempo", "Stage", "Plot"],
+                explain: "Musiqaning ijro etilish tezligi, uning ritmik harakati 'tempo' (sur'at) deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 58,
+                q: "The phrase 'bring back memories' means:",
+                answer: "Make you remember the past",
+                options: ["Create a problem", "Forget the past", "Make you remember the past", "Write a story"],
+                explain: "Eski xotiralarni uyg'otish, o'tmishdagi voqealarni yodga solish 'bring back memories' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 59,
+                q: "Which word best describes music that helps you relax?",
+                answer: "Soothing",
+                options: ["Harsh", "Soothing", "Chaotic", "Aggressive"],
+                explain: "Inson asab tizimini tinchlantiruvchi, yoqimli va muloyim ohang 'soothing' (tinchlantiruvchi) deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 60,
+                q: "Many people can relate _ the message of this song.",
+                answer: "To",
+                options: ["At", "For", "On", "To"],
+                explain: "'Relate to' iborasi musiqaning ma'nosini o'z hayotiga bog'lash, his qila olishni anglatadi.",
+                cat: "media"
+            },
+            {
+                id: 61,
+                q: "Social media allows people to keep _ with friends and family.",
+                answer: "In touch",
+                options: ["Away", "Off", "In touch", "Out"],
+                explain: "Yaqin insonlar bilan doimiy muloqotda bo'lish va xabarlashib turish 'keep in touch' deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 62,
+                q: "Which word refers to information that spreads quickly online?",
+                answer: "Content",
+                options: ["Lecture", "Content", "Chapter", "Novel"],
+                explain: "Internet tarmoqlarida foydalanuvchilar ulashadigan ma'lumotlar va media mahsulotlari 'content' (kontent) deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 63,
+                q: "The phrase 'go viral' means:",
+                answer: "Become extremely popular online",
+                options: ["Become outdated", "Become extremely popular online", "Lose followers", "Delete a post"],
+                explain: "Biron rasm yoki video internetda bir zumda millionlab odamlarga tarqalib, mashhur bo'lib ketishi 'go viral' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 64,
+                q: "Which word best describes someone who spends too much time online?",
+                answer: "Addicted",
+                options: ["Sociable", "Addicted", "Reliable", "Generous"],
+                explain: "Internet yoki telefonga o'ta bog'lanib qolgan, usiz yashay olmaydigan asir shaxs 'addicted' (mubtalo) deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 65,
+                q: "Complete the sentence: 'Many teenagers are influenced _ social media trends.'",
+                answer: "By",
+                options: ["At", "For", "By", "With"],
+                explain: "Nisbiy nisbatda (Passive Voice) ta'sir ostida qolish har doim 'influenced by' (tomonidan ta'sirlangan) predlogi bilan beriladi.",
+                cat: "media"
+            },
+            {
+                id: 66,
+                q: "Which phrasal verb means 'create an online account'?",
+                answer: "Sign up",
+                options: ["Log out", "Sign up", "Turn off", "Carry on"],
+                explain: "Veb-sayt yoki ijtimoiy tarmoqda yangi profil yaratish 'sign up' (ro'yxatdan o'tish) deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 67,
+                q: "The idiom 'keep up with the times' means:",
+                answer: "Stay modern and informed",
+                options: ["Live in the past", "Stay modern and informed", "Work harder", "Save money"],
+                explain: "Zamon bilan hamnafas yashash, eng so'nggi yangiliklardan va texnologiyalardan xabardor bo'lish 'keep up with the times' deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 68,
+                q: "Which word refers to false information on the internet?",
+                answer: "Misinformation",
+                options: ["Evidence", "Misinformation", "Research", "Announcement"],
+                explain: "Internetda ataylab yoki bilmasdan tarqatilgan noto'g'ri, yolg'on xabar 'misinformation' (noto'g'ri axborot) deb nomlanadi.",
+                cat: "media"
+            },
+            {
+                id: 69,
+                q: "A person who follows another user online is called a:",
+                answer: "Follower",
+                options: ["Publisher", "Editor", "Follower", "Manager"],
+                explain: "Ijtimoiy tarmoqlarda boshqa foydalanuvchining sahifasiga obuna bo'lgan shaxs 'follower' (obunachi) deyiladi.",
+                cat: "media"
+            },
+            {
+                id: 70,
+                q: "Which phrase means 'share something online'?",
+                answer: "Post something",
+                options: ["Take over", "Look after", "Post something", "Break down"],
+                explain: "Internetga rasm, fikr yoki video yuklash va joylashtirish 'post something' deb ataladi.",
+                cat: "media"
+            },
+            {
+                id: 71,
+                q: "A healthy lifestyle includes regular exercise and a balanced:",
+                answer: "Diet",
+                options: ["Schedule", "Routine", "Diet", "Career"],
+                explain: "Sog'lom hayot kechirish uchun jismoniy tarbiya bilan birga muvozanatlashgan to'g'ri ovqatlanish tartibi — 'balanced diet' zarurdir.",
+                cat: "lifestyle"
+            },
+            {
+                id: 72,
+                q: "The phrase 'work out' means:",
+                answer: "Exercise",
+                options: ["Give up", "Exercise", "Fall asleep", "Travel abroad"],
+                explain: "Sport zalida yoki uyda jismoniy mashqlar bilan shug'ullanish 'work out' iborasi orqali beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 73,
+                q: "Which word means 'physically fit and healthy'?",
+                answer: "Fit",
+                options: ["Exhausted", "Fit", "Lazy", "Anxious"],
+                explain: "Tana a'zolari sog'lom va jismonan baquvvat holatda bo'lish 'fit' (baquvvat) so'zi bilan ifodalanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 74,
+                q: "Complete the sentence: 'You should cut _ sugary drinks.'",
+                answer: "Down on",
+                options: ["In", "On", "Down on", "Over"],
+                explain: "'Cut down on' iborasi shakarli ichimliklar yoki zararli mahsulotlarni iste'mol qilishni kamaytirishni bildiradi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 75,
+                q: "The idiom 'fit as a fiddle' means:",
+                answer: "Very healthy",
+                options: ["Very tired", "Very busy", "Very healthy", "Very rich"],
+                explain: "Insonning sog'lig'i juda a'lo darajada va tetik bo'lishi 'fit as a fiddle' iborasi bilan beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 76,
+                q: "Which word refers to a period of relaxation after work?",
+                answer: "Rest",
+                options: ["Pressure", "Rest", "Effort", "Stress"],
+                explain: "Og'ir ish kunidan keyin jismoniy va ruhiy tiklanish davri 'rest' (dam olish) deb ataladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 77,
+                q: "A person who eats only plant-based foods is called a:",
+                answer: "Vegan",
+                options: ["Chef", "Athlete", "Vegan", "Trainer"],
+                explain: "Hayvonot mahsulotlarini mutlaqo rad etib, faqat o'simliklar bilan oziqlanadigan shaxs 'vegan' deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 78,
+                q: "Which phrase means 'to recover from an illness'?",
+                answer: "Get over",
+                options: ["Break down", "Get over", "Turn up", "Run into"],
+                explain: "Kasallikdan tuzalib, oyoqqa turish va eski holiga qaytish 'get over' (tuzalmoq) fe'li bilan ifodalanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 79,
+                q: "Which word best completes the sentence? 'Regular exercise can _ the risk of disease.'",
+                answer: "Reduce",
+                options: ["Increase", "Ignore", "Reduce", "Measure"],
+                explain: "Doimiy jismoniy tarbiya inson hayotidagi ko'plab kasalliklarni ortda qoldirib, xavfni kamaytiradi ('reduce risk').",
+                cat: "lifestyle"
+            },
+            {
+                id: 80,
+                q: "Which habit is most beneficial for good health?",
+                answer: "Getting enough sleep",
+                options: ["Skipping meals", "Getting enough sleep", "Avoiding exercise", "Eating fast food daily"],
+                explain: "Sog'lom asab va tana uchun eng foydali odat bu — har kuni to'liq va yetarli uxlashdir ('getting enough sleep').",
+                cat: "lifestyle"
+            },
+            {
+                id: 81,
+                q: "When you feel ill, you may need to make an appointment with a:",
+                answer: "Doctor",
+                options: ["Cashier", "Doctor", "Mechanic", "Librarian"],
+                explain: "Inson o'zini yomon his qilganda shifokor qabuliga ('make an appointment with a doctor') yozilishi shart.",
+                cat: "lifestyle"
+            },
+            {
+                id: 82,
+                q: "The phrase 'come down with' means:",
+                answer: "Become ill with",
+                options: ["Recover from", "Become ill with", "Look after", "Check on"],
+                explain: "Yengil gripp yoki biron-bir shamollash kasalligini yuqtirib olish 'come down with' iborasi orqali beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 83,
+                q: "Which symptom is commonly associated with a cold?",
+                answer: "Runny nose",
+                options: ["Broken arm", "Runny nose", "Tooth extraction", "Sunburn"],
+                explain: "Shamollashning eng keng tarqalgan boshlang'ich belgisi bu — burun oqishi ('runny nose') hisoblanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 84,
+                q: "Complete the sentence: 'The doctor advised me to take the medicine _ a day.'",
+                answer: "Twice",
+                options: ["Many", "Twice", "Soon", "Early"],
+                explain: "Dori vositalarini iste'mol qilishda kuniga ikki marta tartibi 'twice a day' kollokatsiyasi yordamida beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 85,
+                q: "The idiom 'under the weather' means:",
+                answer: "Feeling slightly ill",
+                options: ["Working outside", "Traveling abroad", "Feeling slightly ill", "Feeling excited"],
+                explain: "Inson o'zini biroz holsiz va kasalmand his qilishi 'under the weather' iborasi bilan ifodalanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 86,
+                q: "Which word refers to the treatment of a disease?",
+                answer: "Medication",
+                options: ["Injury", "Medication", "Symptom", "Diagnosis"],
+                explain: "Kasallikka qarshi shifokor tomonidan yozilgan dori-darmonlar va davolash kursi 'medication' deb nomlanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 87,
+                q: "A patient usually goes to a pharmacy to:",
+                answer: "Buy medicine",
+                options: ["Take an exam", "Watch a film", "Buy medicine", "Open a bank account"],
+                explain: "Bemorlar shifokor yozgan retsept bo'yicha dorilarni sotib olish uchun dorixonaga (pharmacy) boradilar.",
+                cat: "lifestyle"
+            },
+            {
+                id: 88,
+                q: "Which phrase means 'to regain your health'?",
+                answer: "Get better",
+                options: ["Take off", "Get better", "Bring up", "Put away"],
+                explain: "Sog'liqni tiklash va kasallikdan so'ng asta-sekin yaxshilanish 'get better' deb ataladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 89,
+                q: "Which word best describes a pain that is very strong?",
+                answer: "Severe",
+                options: ["Mild", "Temporary", "Severe", "Gentle"],
+                explain: "Chidab bo'lmas darajadagi o'ta kuchli jismoniy og'riq 'severe pain' deb ta'riflanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 90,
+                q: "Complete the sentence: 'If the symptoms continue, you should _ a doctor.'",
+                answer: "Consult",
+                options: ["Avoid", "Ignore", "Consult", "Delay"],
+                explain: "Agar kasallik belgilari davom etsa, kechiktirmasdan shifokor bilan maslahatlashish ('consult a doctor') zarur.",
+                cat: "lifestyle"
+            },
+            {
+                id: 91,
+                q: "Which word best describes a famous sports person?",
+                answer: "Athlete",
+                options: ["Customer", "Passenger", "Athlete", "Neighbor"],
+                explain: "Professional sport bilan shug'ullanadigan, mashhur jismoniy chiniqqan shaxs 'athlete' (atlet) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 92,
+                q: "The phrase 'look up to' means:",
+                answer: "Admire and respect",
+                options: ["Compete with", "Ignore", "Admire and respect", "Laugh at"],
+                explain: "Biron insonni o'ziga namuna qilib olish, unga hurmat ko'rsatish 'look up to' (havas qilmoq) iborasi orqali beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 93,
+                q: "A celebrity is someone who:",
+                answer: "Is well known to the public",
+                options: ["Works in a factory", "Studies at university", "Is well known to the public", "Owns a farm"],
+                explain: "Ommaga keng tanilgan, san'atkor, sportchi yoki ijtimoiy mashhur shaxs 'celebrity' (mashhurlar) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 94,
+                q: "Which word means 'a strong wish to achieve something'?",
+                answer: "Determination",
+                options: ["Luck", "Determination", "Excuse", "Comfort"],
+                explain: "Biron bir maqsadga erishish yo'lidagi sadoqat va mustahkam iroda 'determination' (qat'iyatlilik) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 95,
+                q: "Complete the sentence: 'Many young people _ famous athletes as role models.'",
+                answer: "Look up to",
+                options: ["Look down on", "Get over", "Look up to", "Run out of"],
+                explain: "Yoshlarning taniqli sportchilarga havas qilib, ularni o'rganishi 'look up to as role models' iborasi bilan beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 96,
+                q: "The idiom 'go the extra mile' means:",
+                answer: "Make an extra effort",
+                options: ["Travel a long distance", "Make an extra effort", "Move abroad", "Win a race"],
+                explain: "Kutilganidan yoki talab qilinganidan ko'ra ko'proq kuch sarflab harakat qilish 'go the extra mile' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 97,
+                q: "Which quality helps athletes succeed in competitions?",
+                answer: "Discipline",
+                options: ["Laziness", "Dishonesty", "Discipline", "Carelessness"],
+                explain: "Sport musobaqalarida g'alaba qozonish uchun har bir atletda temir intizom (discipline) bo'lishi shart.",
+                cat: "culture"
+            },
+            {
+                id: 98,
+                q: "A role model is someone who:",
+                answer: "Others admire and try to imitate",
+                options: ["Needs help", "Others admire and try to imitate", "Avoids responsibility", "Dislikes teamwork"],
+                explain: "Atrofdagilar havas qiladigan va unga o'xshashga intiladigan namuna shaxs 'role model' (ibratli shaxs) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 99,
+                q: "Which phrase means 'become successful'?",
+                answer: "Make it",
+                options: ["Fall apart", "Make it", "Take off", "Break down"],
+                explain: "Hayotda barcha qiyinchiliklarni yengib, muvaffaqiyatga erishish va tanilish 'make it' deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 100,
+                q: "Many celebrities use social media to connect _ their fans.",
+                answer: "With",
+                options: ["At", "With", "For", "About"],
+                explain: "Yulduzlarning o'z muxlislari bilan yaqindan aloqa o'rnatishi 'connect with' predlogi yordamida beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 101,
+                q: "Which word refers to a journey from one place to another?",
+                answer: "Trip",
+                options: ["Festival", "Trip", "Contest", "Lecture"],
+                explain: "Bir joydan ikkinchi manzilga qisqa muddatli sayohat yoki safar qilish 'trip' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 102,
+                q: "The phrase 'set off' means:",
+                answer: "Begin a journey",
+                options: ["Check in", "Begin a journey", "Return home", "Pack a suitcase"],
+                explain: "Sayohatga yoki uzoq safarga chiqish maqsadida uydan yo'lga tushish 'set off' fe'li orqali beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 103,
+                q: "A person who travels for pleasure is called a:",
+                answer: "Tourist",
+                options: ["Passenger", "Tourist", "Driver", "Reporter"],
+                explain: "Dam olish va qiziqarli joylarni ko'rish maqsadida sayohat qiladigan shaxs 'tourist' (sayyoh) deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 104,
+                q: "Complete the sentence: 'We arrived _ the airport two hours before the flight.'",
+                answer: "At",
+                options: ["On", "At", "Into", "By"],
+                explain: "Aeroport yoki vokzal kabi aniq kichik manzillarga yetib borish 'arrive at' predlogi yordamida beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 105,
+                q: "Which idiom means 'to travel frequently'?",
+                answer: "Have itchy feet",
+                options: ["Break the ice", "Have itchy feet", "Hit the books", "Call it a day"],
+                explain: "Bitta joyda uzoq tura olmaydigan, doimiy ravishda yangi o'lkalarga sayohat qilishni xohlaydigan shaxs 'have itchy feet' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 106,
+                q: "Which word refers to the place where you stay during a trip?",
+                answer: "Accommodation",
+                options: ["Platform", "Accommodation", "Passport", "Luggage"],
+                explain: "Sayohat davomida vaqtincha yashash joyi, mehmonxona yoki xonadon 'accommodation' (turar joy) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 107,
+                q: "The phrase 'check in' is most commonly used when:",
+                answer: "Arriving at a hotel or airport",
+                options: ["Buying food", "Arriving at a hotel or airport", "Taking photos", "Crossing a street"],
+                explain: "Mehmonxonaga yetib borganda yoki aeroportda ro'yxatdan o'tish jarayoni 'check in' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 108,
+                q: "A sightseeing tour usually involves:",
+                answer: "Visiting interesting places",
+                options: ["Studying", "Visiting interesting places", "Shopping only", "Working abroad"],
+                explain: "Sayohat davomida shaharning diqqatga sazovor tarixiy va madaniy ob'ektlarini tomosha qilish 'sightseeing' deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 109,
+                q: "Which word best describes a trip that is carefully organized?",
+                answer: "Well-planned",
+                options: ["Unexpected", "Well-planned", "Dangerous", "Expensive"],
+                explain: "Sayohatning barcha tafsilotlari oldindan aniq va tizimli rejalashtirilgan bo'lsa, u 'well-planned' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 110,
+                q: "What do travelers usually need to board an international flight?",
+                answer: "Passport",
+                options: ["Driving licence", "Library card", "Passport", "Certificate"],
+                explain: "Xorijiy davlatlarga parvoz qilish va chegaradan o'tish uchun eng asosiy ruxsat beruvchi hujjat bu — pasport hisoblanadi.",
+                cat: "culture"
+            },
+            {
+                id: 111,
+                q: "A natural disaster is an event that:",
+                answer: "Causes serious damage in nature",
+                options: ["Occurs in a classroom", "Causes serious damage in nature", "Happens during sports", "Takes place in a cinema"],
+                explain: "Tabiat kuchlari tufayli vujudga kelib, atrof-muhit va inson hayotiga daxshatli zarar yetkazuvchi hodisalar 'natural disaster' (tabiiy ofat) deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 112,
+                q: "Which word refers to a sudden shaking of the ground?",
+                answer: "Earthquake",
+                options: ["Flood", "Storm", "Earthquake", "Drought"],
+                explain: "Yer qobig'ining to'satdan qattiq siljishi va silkinishi tabiatda 'earthquake' (yer qimirlashi) deb ataladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 113,
+                q: "The phrase 'wipe out' means:",
+                answer: "Destroy completely",
+                options: ["Protect completely", "Destroy completely", "Build quickly", "Repair carefully"],
+                explain: "Tabiiy ofat yoki daxshatli kuch ta'sirida biron-bir bino yoki butun boshli hududni yer yuzidan butunlay yo'q qilib tashlash 'wipe out' deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 114,
+                q: "A flood occurs when:",
+                answer: "Water covers land that is usually dry",
+                options: ["The ground shakes", "Water covers land that is usually dry", "The temperature rises", "A volcano erupts"],
+                explain: "Kuchli yog'ingarchilik natijasida daryolar toshib, quruqlikni suv qoplashi 'flood' (suv toshqini) deb nomlanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 115,
+                q: "Complete the sentence: 'Emergency workers arrived quickly to _ assistance.'",
+                answer: "Provide",
+                options: ["Make", "Take", "Provide", "Bring"],
+                explain: "Favqulodda vaziyatlar xodimlari jabrlanganlarga yordam ko'rsatishi kollokatsiyasi 'provide assistance' shaklida ishlatiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 116,
+                q: "The idiom 'weather the storm' means:",
+                answer: "Survive a difficult situation",
+                options: ["Predict bad weather", "Survive a difficult situation", "Travel during rain", "Cause a problem"],
+                explain: "Barcha qiyinchiliklar va hayotiy to'siqlarni yengib, og'ir vaziyatdan muvaffaqiyatli omon chiqish 'weather the storm' deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 117,
+                q: "Which word refers to a long period without rain?",
+                answer: "Drought",
+                options: ["Tornado", "Drought", "Landslide", "Hurricane"],
+                explain: "Yog'ingarchilikning mutlaqo bo'lmasligi oqibatida yerlarning qurib qolishi 'drought' (qurg'oqchilik) deb ataladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 118,
+                q: "Which organization often helps people after natural disasters?",
+                answer: "Relief agency",
+                options: ["Cinema club", "Sports team", "Relief agency", "Music band"],
+                explain: "Tabiiy ofatdan jabr ko'rgan sivilizatsiyaga oziq-ovqat va tibbiy yordam beruvchi tashkilot 'relief agency' (yordam agentligi) deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 119,
+                q: "The phrase 'evacuate an area' means:",
+                answer: "Leave an area for safety reasons",
+                options: ["Visit an area", "Leave an area for safety reasons", "Build houses there", "Explore the area"],
+                explain: "Xavf ostida qolgan hudud aholisini xavfsiz joyga ko'chirish va hududni tark etish 'evacuate an area' deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 120,
+                q: "Natural disasters can have a major _ on people's lives.",
+                answer: "Impact",
+                options: ["Advice", "Decision", "Impact", "Choice"],
+                explain: "Tabiiy ofat insoniyat hayotiga daxshatli va jiddiy ta'sir ko'rsatishi 'have a major impact' birikmasi bilan beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 121,
+                q: "The phrase 'catch up with' means:",
+                answer: "Talk to someone and exchange recent news",
+                options: ["Avoid someone", "Meet for the first time", "Talk to someone and exchange recent news", "Compete against someone"],
+                explain: "Uzoq vaqt ko'rishmagan do'st bilan diydorlashib, so'nggi yangiliklar bilan bo'lishish 'catch up with' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 122,
+                q: "Which word best describes a weekend that is full of activities?",
+                answer: "Eventful",
+                options: ["Quiet", "Boring", "Eventful", "Ordinary"],
+                explain: "Turli xil qiziqarli voqealar, uchrashuvlar va tadbirlarga boy bo'lgan dam olish kuni 'eventful weekend' deb ta'riflanadi.",
+                cat: "culture"
+            },
+            {
+                id: 123,
+                q: "Yesterday I ran _ an old friend while shopping.",
+                answer: "Into",
+                options: ["Away from", "Over", "Into", "Across from"],
+                explain: "'Run into' iborasi ko'chada yoki biron-bir joyda kutilmaganda eski tanishni uchratib qolishni anglatadi.",
+                cat: "culture"
+            },
+            {
+                id: 124,
+                q: "The idiom 'have a whale of a time' means:",
+                answer: "Have a great time",
+                options: ["Feel nervous", "Work hard", "Have a great time", "Travel abroad"],
+                explain: "Vaqtni juda quvnoq, ajoyib va esda qolarli tarzda o'tkazish 'have a whale of a time' deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 125,
+                q: "Which phrase means 'relax and stop working'?",
+                answer: "Take it easy",
+                options: ["Look after", "Take it easy", "Bring up", "Turn down"],
+                explain: "Haddan tashqari ko'p mehnatdan so'ng tinchlanish va dam olish 'take it easy' (baforja bo'lmoq) iborasi orqali beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 126,
+                q: "A memorable weekend is one that is:",
+                answer: "Unforgettable",
+                options: ["Forgettable", "Unforgettable", "Routine", "Average"],
+                explain: "Inson xotirasida o'chmas iz qoldiradigan, ajoyib dam olish kuni 'unforgettable' (unutilmas) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 127,
+                q: "We decided to _ out for dinner on Saturday evening.",
+                answer: "Go",
+                options: ["Carry", "Take", "Go", "Bring"],
+                explain: "Shanba oqshomida uyda emas, balki tashqarida, restoranda ovqatlanish 'go out for dinner' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 128,
+                q: "Which word refers to an activity done for enjoyment?",
+                answer: "Leisure activity",
+                options: ["Responsibility", "Leisure activity", "Assignment", "Appointment"],
+                explain: "Inson o'z bo'sh vaqtida zavq olish va hordiq chiqarish uchun bajaradigan mashg'uloti 'leisure activity' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 129,
+                q: "The phrase 'hang out' means:",
+                answer: "Spend time relaxing with friends",
+                options: ["Study hard", "Spend time relaxing with friends", "Travel abroad", "Work overtime"],
+                explain: "Do'stlar bilan norasmiy uchrashib, birga vaqtni bekorchi va quvnoq o'tkazish 'hang out' deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 130,
+                q: "My weekend plans fell _ because of the bad weather.",
+                answer: "Through",
+                options: ["On", "In", "Through", "Over"],
+                explain: "Noqulay ob-havo yoki biron sababga ko'ra rejalashtirilgan ishlarning amalga oshmay qolishi 'fall through' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 131,
+                q: "Which phrase would you use when entering a restaurant?",
+                answer: "Book a table",
+                options: ["Check in", "Book a table", "Take off", "Break down"],
+                explain: "Restoranga borishdan oldin u yerda bo'sh joyni band qilib qo'yish 'book a table' (stol buyurtma qilmoq) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 132,
+                q: "A person who serves food in a restaurant is called a:",
+                answer: "Waiter",
+                options: ["Chef", "Manager", "Waiter", "Customer"],
+                explain: "Restoranda mijozlarga taomlarni taqdim etuvchi xizmatchi erkak kishi 'waiter' (ofitsiant) deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 133,
+                q: "The phrase 'eat out' means:",
+                answer: "Eat in a restaurant",
+                options: ["Cook at home", "Eat in a restaurant", "Buy groceries", "Skip a meal"],
+                explain: "Uydan tashqarida, qahvaxona yoki oshxonalarda ovqatlanish 'eat out' iborasi bilan ifodalanadi.",
+                cat: "culture"
+            },
+            {
+                id: 134,
+                q: "Complete the sentence: 'Could we see the _, please?'",
+                answer: "Menu",
+                options: ["Receipt", "Menu", "Kitchen", "Billboard"],
+                explain: "Restoranda taomlar va ularning narxlari ro'yxatini so'rash uchun 'Could we see the menu, please?' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 135,
+                q: "The idiom 'have a sweet tooth' means:",
+                answer: "Enjoy eating sweets",
+                options: ["Like healthy food", "Enjoy eating sweets", "Cook well", "Eat quickly"],
+                explain: "Shirinliklarni, shokolad va pirojniylarni haddan tashqari yaxshi ko'radigan shaxs 'have a sweet tooth' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 136,
+                q: "Which word refers to the main dish of a meal?",
+                answer: "Main course",
+                options: ["Dessert", "Starter", "Main course", "Beverage"],
+                explain: "Ovqatlanish jarayonida birinchi yengil gazaklardan so'ng tortiladigan asosiy taom 'main course' deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 137,
+                q: "What does the phrase 'split the bill' mean?",
+                answer: "Share the cost of the meal",
+                options: ["Pay extra money", "Share the cost of the meal", "Leave without paying", "Order separate meals"],
+                explain: "Do'stlar bilan ovqatlangandan so'ng umumiy hisobni hamma o'ziga teng taqsimlab to'lashi 'split the bill' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 138,
+                q: "A restaurant that is crowded is usually:",
+                answer: "Busy",
+                options: ["Empty", "Busy", "Quiet", "Closed"],
+                explain: "Mijozlar bilan liq to'la bo'lgan mashhur va gavjum restoran har doim 'busy' (band, gavjum) hisoblanadi.",
+                cat: "culture"
+            },
+            {
+                id: 139,
+                q: "Complete the sentence: 'The food was so delicious that I cleaned my _.'",
+                answer: "Plate",
+                options: ["Menu", "Plate", "Table", "Glass"],
+                explain: "Taom juda mazali bo'lgani sababli tarelkadagi barcha ovqatni oxirigacha yeb tugatish 'clean the plate' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 140,
+                q: "Which phrase is commonly used when ordering food?",
+                answer: "I'd like to order...",
+                options: ["Take your time", "I'd like to order...", "See you later", "Never mind"],
+                explain: "Ofitsiantga buyurtma berishni boshlashda 'I'd like to order...' (Men ... buyurtma qilmoqchi edim) iborasi ishlatiladi.",
+                cat: "culture"
+            },
+            {
+                id: 141,
+                q: "The phrase 'best wishes' is commonly used when:",
+                answer: "Congratulating someone",
+                options: ["Making a complaint", "Congratulating someone", "Giving directions", "Ordering food"],
+                explain: "Biron insonni muvaffaqiyat yoki bayram bilan tabriklash va ezgu tilaklar bildirish uchun 'best wishes' iborasi yoziladi.",
+                cat: "culture"
+            },
+            {
+                id: 142,
+                q: "Which word means a special day of celebration?",
+                answer: "Occasion",
+                options: ["Journey", "Lecture", "Occasion", "Project"],
+                explain: "Muhim yubiley, to'y yoki biron-bir tantanali bayram kuni 'special occasion' (maxsus ayyom) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 143,
+                q: "The idiom 'on top of the world' means:",
+                answer: "Feeling extremely happy",
+                options: ["Feeling tired", "Feeling lonely", "Feeling extremely happy", "Feeling worried"],
+                explain: "O'zining yuksak yutug'idan so'ng cheksiz baxtiyorlik his qilish 'on top of the world' (dunyoning eng yuqori nuqtasida) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 144,
+                q: "Complete the sentence: 'I would like to congratulate you _ your success.'",
+                answer: "On",
+                options: ["At", "For", "On", "With"],
+                explain: "Biron kishini muvaffaqiyati bilan tabriklash kollokatsiyasi har doim 'congratulate on success' ko'rinishida bo'ladi.",
+                cat: "culture"
+            },
+            {
+                id: 145,
+                q: "A graduation ceremony is held to:",
+                answer: "Celebrate completing studies",
+                options: ["Start a course", "Celebrate completing studies", "Find a job", "Open a business"],
+                explain: "Maktab yoki universitet ta'limini muvaffaqiyatli tamomlaganlik munosabati bilan o'tkaziladigan tantana 'graduation ceremony' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 146,
+                q: "Which phrase is most suitable for a birthday card?",
+                answer: "Many happy returns!",
+                options: ["What's the matter?", "Many happy returns!", "Take care of it.", "That's enough."],
+                explain: "Tug'ilgan kun tabriknomalarida eng ko'p yoziladigan klassik inglizcha tilak 'Many happy returns!' (Uzoq yillar quvonchli kunlar qaytsin) hisoblanadi.",
+                cat: "culture"
+            },
+            {
+                id: 147,
+                q: "The word 'achievement' means:",
+                answer: "Something successfully accomplished",
+                options: ["Failure", "Mistake", "Something successfully accomplished", "Opportunity"],
+                explain: "Inson o'z mehnati va qat'iyati evaziga qo'lga kiritgan muvaffaqiyatli natija 'achievement' (yutuq) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 148,
+                q: "The phrase 'give a speech' means:",
+                answer: "Speak to an audience",
+                options: ["Listen carefully", "Write a report", "Speak to an audience", "Read silently"],
+                explain: "Tantanali marosimda jamoat va tomoshabinlar oldida nutq so'zlash 'give a speech' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 149,
+                q: "Which word best completes the sentence? 'Everyone applauded her remarkable _.'",
+                answer: "Achievement",
+                options: ["Problem", "Decision", "Achievement", "Suggestion"],
+                explain: "Sahnadagilar uning aqlbovar qilmas yutug'ini olqishlashdi jumlasi uchun 'remarkable achievement' eng to'g'ri birikmadir.",
+                cat: "culture"
+            },
+            {
+                id: 150,
+                q: "The phrase 'celebrate a milestone' means:",
+                answer: "Mark an important achievement or stage",
+                options: ["Forget an event", "Mark an important achievement or stage", "Delay a project", "Avoid responsibility"],
+                explain: "Hayotdagi eng muhim burilish nuqtasi, yubiley yoki katta bosqichni tantana qilish 'celebrate a milestone' deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 151,
+                q: "Young people often use their free time to _ new hobbies.",
+                answer: "Take up",
+                options: ["Put off", "Look down on", "Take up", "Run out of"],
+                explain: "Yangi qiziqarli mashg'ulot yoki xobbi bilan shug'ullanishni boshlash 'take up' (boshlamoq) fe'li bilan ifodalanadi.",
+                cat: "culture"
+            },
+            {
+                id: 152,
+                q: "Which word best describes an activity done for enjoyment?",
+                answer: "Pastime",
+                options: ["Responsibility", "Duty", "Pastime", "Requirement"],
+                explain: "Insonning bo'sh vaqtida shunchaki zavqlanish uchun bajaradigan sevimli ishi 'pastime' (vaqt o'tkazish, ermak) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 153,
+                q: "The phrase 'chill out' means:",
+                answer: "Relax",
+                options: ["Work harder", "Travel abroad", "Relax", "Study seriously"],
+                explain: "Hech narsani o'ylamasdan asabni tinchlantirish, hordiq chiqarish va dam olish 'chill out' deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 154,
+                q: "Many teenagers enjoy _ out with their friends after school.",
+                answer: "Hanging",
+                options: ["Taking", "Bringing", "Hanging", "Turning"],
+                explain: "Maktabdan keyin o'rtoqlar bilan birga uchrashib vaqt o'tkazish 'hang out' fe'li orqali beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 155,
+                q: "The idiom 'let your hair down' means:",
+                answer: "Relax and enjoy yourself",
+                options: ["Get a haircut", "Dress formally", "Relax and enjoy yourself", "Feel nervous"],
+                explain: "Barcha rasmiy qoidalarni chetga surib, erkin dam olish va o'yin-kulgi qilish 'let your hair down' deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 156,
+                q: "Which word refers to a person's free time?",
+                answer: "Leisure",
+                options: ["Occupation", "Schedule", "Leisure", "Deadline"],
+                explain: "Insonning ish yoki o'qishdan bo'sh bo'lgan shaxsiy vaqti 'leisure' (bo'sh vaqt) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 157,
+                q: "In my spare time, I enjoy _ photographs.",
+                answer: "Taking",
+                options: ["Taking", "Making", "Doing", "Taking"],
+                explain: "Kamera yoki telefon yordamida chiroyli rasmga olish muloqoti har doim 'take photographs' ko'rinishida bo'ladi.",
+                cat: "culture"
+            },
+            {
+                id: 158,
+                q: "Which phrase means 'to spend time doing nothing important'?",
+                answer: "Kill time",
+                options: ["Catch up with", "Kill time", "Break the ice", "Turn over a new leaf"],
+                explain: "Vaqt tezroq o'tishi uchun shunchaki keraksiz mayda ishlar bilan band bo'lish 'kill time' (vaqtni o'ldirish) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 159,
+                q: "A hobby that involves collecting stamps is called:",
+                answer: "Philately",
+                options: ["Photography", "Philately", "Gardening", "Cycling"],
+                explain: "Pochta markalarini yig'ish va ularni tadqiq qilish bilan bog'liq bo'lgan xobbi 'philately' (filateliya) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 160,
+                q: "Young people should balance study _ recreation.",
+                answer: "With",
+                options: ["By", "At", "With", "For"],
+                explain: "O'qish bilan dam olishni o'zaro bir xil darajada ushlab turish 'balance study with recreation' predlogi orqali beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 161,
+                q: "Traditional Uzbek clothing is often worn on special:",
+                answer: "Occasions",
+                options: ["Subjects", "Projects", "Occasions", "Journeys"],
+                explain: "O'zbek milliy kiyimlari ko'pincha hayit, to'y yoki navro'z kabi maxsus bayram kunlarida ('special occasions') kiyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 162,
+                q: "Which word refers to clothing that is typical of a nation?",
+                answer: "National dress",
+                options: ["Uniform", "Costume", "National dress", "Sportswear"],
+                explain: "Muayyan millat madaniyatini aks ettiruvchi an'anaviy kiyim-bosh 'national dress' deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 163,
+                q: "The phrase 'dress up' means:",
+                answer: "Wear special or formal clothes",
+                options: ["Wear casual clothes", "Wear special or formal clothes", "Buy new clothes", "Wash clothes"],
+                explain: "Bayram yoki rasmiy kechalarga moslab eng chiroyli kiyimlarni kiyish 'dress up' (yasanmoq) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 164,
+                q: "The word 'embroidery' refers to:",
+                answer: "Decorative stitching on fabric",
+                options: ["A type of shoe", "A piece of jewelry", "Decorative stitching on fabric", "A traditional meal"],
+                explain: "Mato yuzasiga rangli iplar bilan chiroyli naqsh solish san'ati 'embroidery' (kashtachilik) deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 165,
+                q: "Which item is commonly associated with Uzbek national clothing?",
+                answer: "Doppi",
+                options: ["Helmet", "Doppi", "Tie", "Gloves"],
+                explain: "O'zbek xalqining eng mashhur milliy kiyim elementi va bosh kiyimi — bu do'ppi (doppi) hisoblanadi.",
+                cat: "culture"
+            },
+            {
+                id: 166,
+                q: "Traditional clothing helps preserve cultural:",
+                answer: "Heritage",
+                options: ["Exercises", "Rules", "Heritage", "Schedules"],
+                explain: "Milliy liboslar xalqning asriy madaniy merosini ('cultural heritage') asrab-avaylashda eng yirik vositadir.",
+                cat: "culture"
+            },
+            {
+                id: 167,
+                q: "The phrase 'pass down' means:",
+                answer: "Transfer from one generation to another",
+                options: ["Throw away", "Transfer from one generation to another", "Sell quickly", "Wear regularly"],
+                explain: "Urf-odat yoki qadriyatlarni avloddan-avlodga o'tkazish, meros qilib qoldirish 'pass down' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 168,
+                q: "Which word best describes clothing made by hand?",
+                answer: "Handcrafted",
+                options: ["Modern", "Expensive", "Handcrafted", "Imported"],
+                explain: "Mashinalar yordamida emas, balki qo'lda tikilgan nafis milliy liboslar 'handcrafted' (qo'l mehnati) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 169,
+                q: "National costumes are often worn during cultural:",
+                answer: "Festivals",
+                options: ["Exams", "Meetings", "Festivals", "Competitions"],
+                explain: "Milliy kiyimlar asosan turli xil madaniy festivallarda ('cultural festivals') namoyish etiladi.",
+                cat: "culture"
+            },
+            {
+                id: 170,
+                q: "Traditional designs reflect a country's:",
+                answer: "Identity",
+                options: ["Weather", "Identity", "Economy", "Population"],
+                explain: "An'anaviy naqshlar va dizaynlar hamisha o'sha millatning o'ziga xosligini ('country's identity') aks ettiradi.",
+                cat: "culture"
+            },
+            {
+                id: 171,
+                q: "Many people learn foreign languages to improve their:",
+                answer: "Career opportunities",
+                options: ["Clothing style", "Career opportunities", "Driving skills", "Cooking abilities"],
+                explain: "Chet tillarini o'rganish insonga xalqaro miqyosdagi eng yaxshi karyera imkoniyatlarini ('career opportunities') taqdim etadi.",
+                cat: "culture"
+            },
+            {
+                id: 172,
+                q: "The phrase 'pick up a language' means:",
+                answer: "Learn a language gradually",
+                options: ["Teach a language", "Forget a language", "Learn a language gradually", "Translate a language"],
+                explain: "Tilni qat'iy darsliklarsiz, shunchaki gaplashib tabiiy muhitda o'rganib olish 'pick up a language' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 173,
+                q: "Which word refers to the ability to speak two languages?",
+                answer: "Bilingualism",
+                options: ["Literacy", "Bilingualism", "Creativity", "Citizenship"],
+                explain: "Ikkita xorijiy tilda bemalol, ravon muloqot qila olish qobiliyati 'bilingualism' (ikki tillilik) deb ataladi.",
+                cat: "culture"
+            },
+            {
+                id: 174,
+                q: "Learning a foreign language can broaden your:",
+                answer: "Horizons",
+                options: ["Luggage", "Horizons", "Wardrobe", "Budget"],
+                explain: "Yangi til o'rganish insonning dunyoqarashini kengaytiradi, bu ingliz tilida 'broaden horizons' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 175,
+                q: "The idiom 'speak the same language' means:",
+                answer: "Understand each other well",
+                options: ["Use identical words", "Understand each other well", "Live in the same country", "Study grammar"],
+                explain: "Fikrlari va maqsadlari bir joydan chiqib, bir-birini mukammal tushunadigan shaxslar 'speak the same language' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 176,
+                q: "Complete the sentence: 'It takes time to become fluent _ a foreign language.'",
+                answer: "In",
+                options: ["At", "On", "In", "For"],
+                explain: "Chet tilida ravon gapira olish iborasi har doim 'fluent in a foreign language' predlogi bilan birikadi.",
+                cat: "culture"
+            },
+            {
+                id: 177,
+                q: "Which skill is improved by regular conversation practice?",
+                answer: "Speaking",
+                options: ["Drawing", "Typing", "Speaking", "Driving"],
+                explain: "Doimiy jonli suhbat amaliyoti (conversation practice) asosan gapirish ('speaking') ko'nikmasini rivojlantiradi.",
+                cat: "culture"
+            },
+            {
+                id: 178,
+                q: "The phrase 'brush up on' means:",
+                answer: "Improve knowledge of something",
+                options: ["Forget completely", "Improve knowledge of something", "Translate word for word", "Teach professionally"],
+                explain: "Eski unutib qo'yilgan bilimlarni takrorlab, qaytadan mukammal holga keltirish 'brush up on' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 179,
+                q: "Which word means 'able to speak smoothly and easily'?",
+                answer: "Fluent",
+                options: ["Accurate", "Fluent", "Silent", "Curious"],
+                explain: "Chet tilida hech qanday tutilishlarsiz, ravon va oson muloqot qiladigan shaxs 'fluent' (ravon) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 180,
+                q: "Learning another language allows people to communicate _ people from different cultures.",
+                answer: "With",
+                options: ["At", "With", "Into", "Upon"],
+                explain: "Turli madaniyat vakillari bilan o'zaro muloqot qilish iborasi 'communicate with people' shaklida yoziladi.",
+                cat: "culture"
+            },
+            {
+                id: 181,
+                q: "Many students face difficulties managing their academic _.",
+                answer: "Workload",
+                options: ["Entertainment", "Workload", "Friendship", "Hobby"],
+                explain: "Talabalar o'qish jarayonida eng ko'p duch keladigan qiyinchilik bu — dars va topshiriqlarning ko'pligi ('academic workload') hisoblanadi.",
+                cat: "academic"
+            },
+            {
+                id: 182,
+                q: "The phrase 'fall behind' means:",
+                answer: "Fail to keep up",
+                options: ["Move forward", "Fail to keep up", "Graduate early", "Pass easily"],
+                explain: "Darslarni vaqtida topshira olmay, guruhdoshlaridan orqada qolib ketish 'fall behind' fe'li bilan beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 183,
+                q: "Which word refers to a feeling of worry before an exam?",
+                answer: "Anxiety",
+                options: ["Confidence", "Anxiety", "Curiosity", "Excitement"],
+                explain: "Imtihonlar oldidan talabani qiynaydigan hayajon va kuchli xavotir 'exam anxiety' (imtihon xavotiri) deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 184,
+                q: "Complete the sentence: 'Students often struggle _ balancing study and personal life.'",
+                answer: "With",
+                options: ["At", "With", "Into", "By"],
+                explain: "O'qish va shaxsiy hayotni muvozanatda saqlashda qiyinchilikka uchrash 'struggle with balancing' predlogi orqali beriladi.",
+                cat: "academic"
+            },
+            {
+                id: 185,
+                q: "The idiom 'under pressure' means:",
+                answer: "Experiencing stress",
+                options: ["Feeling relaxed", "Working outdoors", "Experiencing stress", "Being successful"],
+                explain: "Katta mas'uliyat va qiyinchiliklar sababli kuchli stress ostida ishlash 'under pressure' deb ataladi.",
+                cat: "academic"
+            },
+            {
+                id: 186,
+                q: "Which phrase means 'continue trying despite difficulties'?",
+                answer: "Keep going",
+                options: ["Give in", "Keep going", "Take off", "Look down on"],
+                explain: "Barcha to'siqlarga qaramay harakat qilishda davom etish, taslim bo'lmaslik 'keep going' deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 187,
+                q: "A deadline is:",
+                answer: "The final date for completing work",
+                options: ["A holiday", "The final date for completing work", "A scholarship", "A lecture"],
+                explain: "Vazifalarni topshirish uchun belgilangan eng oxirgi va qat'iy muddat 'deadline' deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 188,
+                q: "Which word best describes a student who never gives up?",
+                answer: "Persistent",
+                options: ["Careless", "Persistent", "Lazy", "Distracted"],
+                explain: "Hech qachon taslim bo'lmaydigan, o'z maqsadiga sodiq va qat'iyatli o'quvchi 'persistent' deb ataladi.",
+                cat: "academic"
+            },
+            {
+                id: 189,
+                q: "The phrase 'cope with' means:",
+                answer: "Deal successfully with",
+                options: ["Avoid", "Deal successfully with", "Create", "Ignore"],
+                explain: "Qiyinchiliklar va stresslarni muvaffaqiyatli bartaraf etish hamda ularni yengish 'cope with' deyiladi.",
+                cat: "academic"
+            },
+            {
+                id: 190,
+                q: "Students can improve their performance by paying more:",
+                answer: "Attention",
+                options: ["Interest", "Attention", "Money", "Advice"],
+                explain: "Talabalar dars jarayonida o'z natijalarini yaxshilashlari uchun ko'proq e'tibor ('pay attention') qaratishlari shart.",
+                cat: "academic"
+            },
+            {
+                id: 191,
+                q: "Which word refers to a custom or belief passed from generation to generation?",
+                answer: "Tradition",
+                options: ["Technology", "Tradition", "Experiment", "Competition"],
+                explain: "Avloddan-avlodga o'tib kelayotgan milliy qadriyatlar va urf-odatlar 'tradition' (an'ana) deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 192,
+                q: "The phrase 'hand down' means:",
+                answer: "Pass from older to younger generations",
+                options: ["Throw away", "Pass from older to younger generations", "Buy something expensive", "Translate a text"],
+                explain: "Kattalardan kichiklarga meros qilib qoldirish, o'rgatish 'hand down' fe'li orqali beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 193,
+                q: "National values help shape a country's:",
+                answer: "Identity",
+                options: ["Climate", "Identity", "Landscape", "Currency"],
+                explain: "Milliy qadriyatlar hamisha davlatning o'ziga xosligini va madaniyatini ('country's identity') belgilaydi.",
+                cat: "culture"
+            },
+            {
+                id: 194,
+                q: "Which word means 'showing respect for customs and beliefs'?",
+                answer: "Respectful",
+                options: ["Modern", "Respectful", "Creative", "Temporary"],
+                explain: "Boshqa xalqlarning madaniyati va qadriyatlariga ehtirom ko'rsatish 'respectful' (hurmat ko'rsatuvchi) deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 195,
+                q: "The idiom 'old habits die hard' means:",
+                answer: "People find it difficult to change habits",
+                options: ["Habits are easy to change", "People find it difficult to change habits", "Old people have many habits", "Traditions disappear quickly"],
+                explain: "Yillar davomida shakllangan eski odatlarni tark etish inson uchun juda qiyin bo'lishi 'old habits die hard' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 196,
+                q: "Complete the sentence: 'Traditional celebrations bring people _ together.'",
+                answer: "Closer",
+                options: ["Of", "Closer", "About", "Across"],
+                explain: "Milliy tantanalar odamlarni bir-biriga yaqinlashtiradi, jipslashtiradi iborasi 'bring people closer' deb beriladi.",
+                cat: "culture"
+            },
+            {
+                id: 197,
+                q: "Which event is often associated with national traditions?",
+                answer: "Festival",
+                options: ["Job interview", "Festival", "Exam", "Meeting"],
+                explain: "Milliy an'analar va madaniyatlarni keng namoyish etadigan yirik xalq sayli 'festival' deyiladi.",
+                cat: "culture"
+            },
+            {
+                id: 198,
+                q: "Cultural heritage includes traditions, customs, and:",
+                answer: "Historical monuments",
+                options: ["Advertisements", "Historical monuments", "Assignments", "Websites"],
+                explain: "Madaniy meros o'z ichiga urf-odatlar bilan birga tarixiy obidalar va yodgorliklarni ('historical monuments') ham qamrab oladi.",
+                cat: "culture"
+            },
+            {
+                id: 99,
+                q: "The phrase 'keep alive' means:",
+                answer: "Continue and preserve",
+                options: ["Forget completely", "Continue and preserve", "Destroy", "Replace"],
+                explain: "Milliy qadriyatlarni yo'qotmasdan, kelajak uchun asrab-avaylash 'keep alive' (yashatib qolmoq) deb nomlanadi.",
+                cat: "culture"
+            },
+            {
+                id: 200,
+                q: "Respecting traditions helps strengthen social:",
+                answer: "Unity",
+                options: ["Competition", "Unity", "Pressure", "Distance"],
+                explain: "An'analarni hurmat qilish jamiyatdagi birlik va jipslikni ('social unity') mustahkamlaydi.",
+                cat: "culture"
+            },
+            {
+                id: 201,
+                q: "Which season comes after spring?",
+                answer: "Summer",
+                options: ["Winter", "Summer", "Autumn", "Rainy season"],
+                explain: "Yillik fasllar almashinuvida bahor faslidan keyin issiq yoz (summer) fasli boshlanadi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 202,
+                q: "The phrase 'look forward to' means:",
+                answer: "Feel excited about something in the future",
+                options: ["Avoid", "Forget", "Feel excited about something in the future", "Complain about"],
+                explain: "Kelajakdagi quvonchli voqeani orziqib va intizorlik bilan kutish 'look forward to' iborasi orqali beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 203,
+                q: "Which word best describes weather that is neither too hot nor too cold?",
+                answer: "Mild",
+                options: ["Stormy", "Mild", "Freezing", "Humid"],
+                explain: "Issiq ham, freezing sovuq ham bo'lmagan yoqimli va shinam ob-havo 'mild weather' (mo'tadil ob-havo) deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 204,
+                q: "Many people enjoy outdoor activities during the _ months.",
+                answer: "Warmer",
+                options: ["Coldest", "Warmer", "Shortest", "Darkest"],
+                explain: "Insonlar ochiq havodagi sport va sayohatlarni asosan issiq oylarda ('warmer months') bajarishni yaxshi ko'radilar.",
+                cat: "lifestyle"
+            },
+            {
+                id: 205,
+                q: "The idiom 'come rain or shine' means:",
+                answer: "No matter what happens",
+                options: ["Only in good weather", "No matter what happens", "During rainy days", "During summer"],
+                explain: "Ob-havoning qanday bo'lishidan yoki sharoitlardan qat'iy nazar, rejalashtirilgan ishni bajarish 'come rain or shine' deyiladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 206,
+                q: "Which season is usually associated with falling leaves?",
+                answer: "Autumn",
+                options: ["Spring", "Summer", "Autumn", "Winter"],
+                explain: "Barglarning sarg'ayib yerga to'kilishi asosan hazonrezgi kuz ('autumn' / 'fall') fasliga xosdir.",
+                cat: "lifestyle"
+            },
+            {
+                id: 207,
+                q: "Complete the sentence: 'I enjoy winter because I can stay _ by the fireplace.'",
+                answer: "Warm",
+                options: ["Wet", "Warm", "Cold", "Busy"],
+                explain: "Qishda kamin atrofida isinib o'tirish, issiqlikni saqlash 'stay warm by the fireplace' ko'rinishida bo'ladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 208,
+                q: "Which word refers to weather conditions over a long period?",
+                answer: "Climate",
+                options: ["Temperature", "Climate", "Forecast", "Storm"],
+                explain: "Muayyan hududdagi ko'p yillik barqaror ob-havo sharoitlari yig'indisi 'climate' (iqlim) deb ataladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 209,
+                q: "The phrase 'brighten up' means:",
+                answer: "Become happier or more cheerful",
+                options: ["Become darker", "Become happier or more cheerful", "Become colder", "Become quieter"],
+                explain: "Inson kayfiyatining yaxshilanishi, yorishishi yoki kunning ochilib ketishi 'brighten up' iborasi orqali beriladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 210,
+                q: "Which season do many students associate with long holidays?",
+                answer: "Summer",
+                options: ["Autumn", "Summer", "Winter", "Spring"],
+                explain: "Maktab va universitetlarda yillik eng uzoq ta'til davri issiq yoz (summer) oylariga to'g'ri keladi.",
+                cat: "lifestyle"
+            },
+            {
+                id: 211,
+                q: "Technology has changed the way people _ with each other.",
+                answer: "Communicate",
+                options: ["Argue", "Communicate", "Compete", "Travel"],
+                explain: "Zamonaviy texnologiyalar insonlarning o'zaro muloqot qilish ('communicate with each other') usullarini butunlay o'zgartirdi.",
+                cat: "future"
+            },
+            {
+                id: 212,
+                q: "The phrase 'log in' means:",
+                answer: "Enter a computer system using a username and password",
+                options: ["Turn off a computer", "Enter a computer system using a username and password", "Delete a file", "Buy a computer"],
+                explain: "Parol va login yordamida shaxsiy hisobga yoki kompyuter tizimiga kirish 'log in' deb nomlanadi.",
+                cat: "future"
+            },
+            {
+                id: 213,
+                q: "Which word refers to a new device or method that improves something?",
+                answer: "Innovation",
+                options: ["Tradition", "Innovation", "Habit", "Rule"],
+                explain: "Texnologiya va fanni rivojlantiruvchi yangilik, ixtiro 'innovation' (innovatsiya) deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 214,
+                q: "Complete the sentence: 'Artificial intelligence is developing very _.'",
+                answer: "Rapidly",
+                options: ["Slow", "Rapidly", "Rarely", "Quietly"],
+                explain: "Sun'iy intellekt (AI) dunyoda juda shiddatli va tez sur'atlarda rivojlanmoqda, bu 'developing very rapidly' deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 215,
+                q: "The idiom 'ahead of its time' means:",
+                answer: "More advanced than expected for its period",
+                options: ["Old-fashioned", "More advanced than expected for its period", "Very expensive", "Difficult to use"],
+                explain: "O'z davriga nisbatan ancha ilgarilab ketgan, o'ta zamonaviy kashfiyot 'ahead of its time' deb ataladi.",
+                cat: "future"
+            },
+            {
+                id: 216,
+                q: "Which device is primarily used to make phone calls and access the internet?",
+                answer: "Smartphone",
+                options: ["Printer", "Smartphone", "Scanner", "Projector"],
+                explain: "Muloqot qilish va internetdan foydalanish uchun ishlatiladigan universal cho'ntak telefoni 'smartphone' deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 217,
+                q: "The phrase 'carry out' means:",
+                answer: "Perform or complete",
+                options: ["Throw away", "Perform or complete", "Look after", "Turn down"],
+                explain: "Ilmiy tadqiqotlar, sinovlar yoki topshiriqlarni amalda bajarish 'carry out' fe'li bilan ifodalanadi.",
+                cat: "future"
+            },
+            {
+                id: 218,
+                q: "Which word refers to information stored electronically?",
+                answer: "Data",
+                options: ["Furniture", "Data", "Clothing", "Equipment"],
+                explain: "Elektron formatda saqlanadigan va qayta ishlanadigan raqamli axborotlar 'data' (ma'lumotlar) deb ataladi.",
+                cat: "future"
+            },
+            {
+                id: 219,
+                q: "Many modern inventions are designed to make life more:",
+                answer: "Convenient",
+                options: ["Complicated", "Convenient", "Dangerous", "Expensive"],
+                explain: "Zamonaviy texnikalar inson hayotini osonlashtirish va qulay qilish uchun ('make life convenient') yaratiladi.",
+                cat: "future"
+            },
+            {
+                id: 220,
+                q: "The internet allows people to access information at the click _ a button.",
+                answer: "Of",
+                options: ["For", "By", "Of", "With"],
+                explain: "Tugmani bir marta bosish orqali axborot olish iborasi ingliz tilida 'at the click of a button' deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 221,
+                q: "An invention is something that has been:",
+                answer: "Created for the first time",
+                options: ["Borrowed", "Created for the first time", "Translated", "Copied"],
+                explain: "Insoniyat tarixida ilgari mavjud bo'lmagan va birinchi marta yaratilgan yangi narsa 'invention' (ixtiro) deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 222,
+                q: "The phrase 'keep up with technology' means:",
+                answer: "Stay informed about new developments",
+                options: ["Avoid technology", "Stay informed about new developments", "Repair technology", "Sell technology"],
+                explain: "Eng so'nggi texnik yangiliklar va dasturlardan xabardor bo'lib turish 'keep up with technology' deb ataladi.",
+                cat: "future"
+            },
+            {
+                id: 223,
+                q: "Which word best describes technology that is easy to use?",
+                answer: "User-friendly",
+                options: ["Complicated", "User-friendly", "Outdated", "Fragile"],
+                explain: "Foydalanish uchun tushunarli va oson bo'lgan dasturiy interfeys 'user-friendly' (foydalanuvchiga qulay) deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 224,
+                q: "The idiom 'change the game' means:",
+                answer: "Completely transform a situation",
+                options: ["Play a new sport", "Completely transform a situation", "Lose a competition", "Learn new rules"],
+                explain: "Vaziyatni yoki sohani butunlay yangi darajaga olib chiqish, inqilob qilish 'change the game' deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 225,
+                q: "Which invention made long-distance communication much easier?",
+                answer: "Telephone",
+                options: ["Tent", "Telephone", "Bicycle", "Compass"],
+                explain: "Uzoq masofali ovozli muloqotni osonlashtirgan tarixiy buyuk kashfiyot bu — telefondir.",
+                cat: "future"
+            },
+            {
+                id: 226,
+                q: "The phrase 'come up with' means:",
+                answer: "Think of an idea",
+                options: ["Give away", "Think of an idea", "Put aside", "Break into"],
+                explain: "Kutilmaganda yangi taklif, yechim yoki g'oya o'ylab topish 'come up with' iborasi orqali beriladi.",
+                cat: "future"
+            },
+            {
+                id: 227,
+                q: "Which word refers to machines performing tasks automatically?",
+                answer: "Automation",
+                options: ["Decoration", "Automation", "Exploration", "Education"],
+                explain: "Inson ishtirokisiz texnika va kompyuterlarning o'zi mustaqil ishlashi 'automation' (avtomatlashtirish) deb ataladi.",
+                cat: "future"
+            },
+            {
+                id: 228,
+                q: "Many companies invest heavily _ research and development.",
+                answer: "In",
+                options: ["At", "For", "In", "On"],
+                explain: "Ilmiy-tadqiqot ishlariga pul tikish va sarmoya kiritish 'invest heavily in' predlogi bilan beriladi.",
+                cat: "future"
+            },
+            {
+                id: 229,
+                q: "The word 'breakthrough' means:",
+                answer: "Important discovery or achievement",
+                options: ["Failure", "Important discovery or achievement", "Routine task", "Delay"],
+                explain: "Fandagi eng kutilmagan va yirik ilmiy kashfiyot yoki muvaffaqiyat 'breakthrough' (keskin burilish, kashfiyot) deyiladi.",
+                cat: "future"
+            },
+            {
+                id: 230,
+                q: "Technology can help people save both time _ effort.",
+                answer: "And",
+                options: ["Or", "But", "And", "Yet"],
+                explain: "Informatika va AKT insonning ham vaqtini, ham kuchini tejashga ('save both time and effort') xizmat qiladi.",
+                cat: "future"
+            }
+        ];
+
+        // Global Application States
+        let shuffledQuestions = [];
+        let activeQuestions = [];
+        let currentIndex = 0;
+        let quizMode = 'study'; // 'study' or 'exam'
+        let examTimerInterval = null;
+        let examSecondsLeft = 3600; // 60 minutes
+        let examAnswers = {}; // { qId: selectedOption }
+        let studyResults = {}; // { qId: { correct: boolean, selectedOption: string } }
+        let bookmarkedQuestionIds = [];
+
+        // Safe LocalStorage Retrieval to prevent crashes in sandboxed iframes
+        try {
+            bookmarkedQuestionIds = JSON.parse(localStorage.getItem('bookmarked_lingo_questions') || '[]');
+        } catch (e) {
+            bookmarkedQuestionIds = [];
+        }
+
+        // Shuffling array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Initialize Options to be random per question (Option Scrambling)
+        function initializeQuestions() {
+            shuffledQuestions = rawQuestionsData.map(q => {
+                const shuffledOpts = shuffleArray([...q.options]);
+                return {
+                    ...q,
+                    options: shuffledOpts
+                };
+            });
+        }
+
+        function loadStateFromLocalStorage() {
+            try {
+                const savedStudyResults = localStorage.getItem('lingo_study_results');
+                if (savedStudyResults) {
+                    studyResults = JSON.parse(savedStudyResults);
+                }
+            } catch (e) {
+                studyResults = {};
+            }
+        }
+
+        function saveStateToLocalStorage() {
+            try {
+                localStorage.setItem('lingo_study_results', JSON.stringify(studyResults));
+                localStorage.setItem('bookmarked_lingo_questions', JSON.stringify(bookmarkedQuestionIds));
+            } catch (e) {
+                // Ignore silently if storage is blocked
+            }
+        }
+
+        // Shuffle current set
+        function shuffleCurrentQuestions() {
+            shuffledQuestions = shuffleArray(shuffledQuestions);
+            shuffledQuestions.forEach(q => {
+                q.options = shuffleArray([...q.options]);
+            });
+            currentIndex = 0;
+            filterQuestions();
+        }
+
+        // Mode Switching
+        function changeQuizMode(mode) {
+            quizMode = mode;
+            const studyBtn = document.getElementById('modeStudyBtn');
+            const examBtn = document.getElementById('modeExamBtn');
+            const timerContainer = document.getElementById('examTimerContainer');
+            const examSubmitBtn = document.getElementById('examSubmitBtn');
+
+            if (mode === 'study') {
+                studyBtn.className = "flex-1 py-2 text-xs font-black rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]";
+                examBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all duration-300 text-slate-500 dark:text-slate-400";
+                timerContainer.classList.add('hidden');
+                examSubmitBtn.classList.add('hidden');
+                clearInterval(examTimerInterval);
+            } else {
+                examBtn.className = "flex-1 py-2 text-xs font-black rounded-xl transition-all duration-300 bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]";
+                studyBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all duration-300 text-slate-500 dark:text-slate-400";
+                timerContainer.classList.remove('hidden');
+                examSubmitBtn.classList.remove('hidden');
+                startExamTimer();
+            }
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        function startExamTimer() {
+            clearInterval(examTimerInterval);
+            examSecondsLeft = 3600; // Reset
+            updateTimerDisplay();
+            examTimerInterval = setInterval(() => {
+                examSecondsLeft--;
+                updateTimerDisplay();
+                if (examSecondsLeft <= 0) {
+                    clearInterval(examTimerInterval);
+                    finishExam(true);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(examSecondsLeft / 60);
+            const seconds = examSecondsLeft % 60;
+            document.getElementById('examTimerText').innerText = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Search & Filtering
+        function filterQuestions() {
+            const filterVal = document.getElementById('categoryFilter').value;
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+
+            activeQuestions = shuffledQuestions.filter(q => {
+                const matchesSearch = q.q.toLowerCase().includes(searchVal) || q.answer.toLowerCase().includes(searchVal);
+                
+                if (filterVal === 'all') {
+                    return matchesSearch;
+                } else if (filterVal === 'bookmarked') {
+                    return bookmarkedQuestionIds.includes(q.id) && matchesSearch;
+                } else {
+                    return q.cat === filterVal && matchesSearch;
+                }
+            });
+
+            document.getElementById('filteredCountBadge').innerText = `${activeQuestions.length} / ${rawQuestionsData.length}`;
+            currentIndex = 0;
+            renderQuiz();
+            renderQuestionMap();
+            updateStats();
+        }
+
+        // Render Test Details
+        function renderQuiz() {
+            const container = document.getElementById('optionsListContainer');
+            const explanationCard = document.getElementById('explanationCard');
+            
+            if (activeQuestions.length === 0) {
+                document.getElementById('questionTextDisplay').innerText = "Belgilangan filtrlar bo'yicha savol topilmadi. Filtrlarni tozalab ko'ring.";
+                document.getElementById('questionIndexBadge').innerText = "SAVOL 0";
+                document.getElementById('questionSourceBadge').innerText = "";
+                container.innerHTML = `
+                    <div class="p-6 text-center text-slate-400 dark:text-slate-500 font-bold border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl bg-white/10">
+                        Natija topilmadi.
+                    </div>`;
+                explanationCard.style.display = 'none';
+                return;
+            }
+
+            const current = activeQuestions[currentIndex];
+            
+            // Set Badge Texts
+            document.getElementById('questionIndexBadge').innerText = `SAVOL ${current.id} (${currentIndex + 1} / ${activeQuestions.length})`;
+            
+            let catName = "Intro & Personality";
+            if (current.cat === 'career') catName = "Career & Job Satisfaction";
+            if (current.cat === 'academic') catName = "Academic Life & Reading";
+            if (current.cat === 'media') catName = "Media, Songs & Social Network";
+            if (current.cat === 'lifestyle') catName = "Healthy Lifestyle & Disasters";
+            if (current.cat === 'culture') catName = "Culture, Celebrations & Travel";
+            if (current.cat === 'future') catName = "Technology & Inventions";
+            if (current.cat === 'growth') catName = "Public Speaking & Environment";
+            document.getElementById('questionSourceBadge').innerText = catName;
+
+            document.getElementById('questionTextDisplay').innerText = current.q;
+
+            // Bookmark status
+            const bookmarkBtn = document.getElementById('bookmarkBtn');
+            if (bookmarkedQuestionIds.includes(current.id)) {
+                bookmarkBtn.className = "w-9 h-9 flex items-center justify-center rounded-xl hover:bg-white/50 dark:hover:bg-slate-800/40 text-amber-500 transition-all active:scale-90";
+            } else {
+                bookmarkBtn.className = "w-9 h-9 flex items-center justify-center rounded-xl hover:bg-white/50 dark:hover:bg-slate-800/40 text-slate-400 dark:text-slate-500 transition-all active:scale-90";
+            }
+
+            container.innerHTML = "";
+            explanationCard.style.display = 'none';
+
+            const studyAns = studyResults[current.id];
+            const examAns = examAnswers[current.id];
+
+            // Shuffled options renders
+            current.options.forEach((opt, idx) => {
+                let charLabel = 'A';
+                if (idx === 1) charLabel = 'B';
+                if (idx === 2) charLabel = 'D';
+                if (idx === 3) charLabel = 'E';
+                
+                const button = document.createElement('button');
+                button.className = "w-full p-4 rounded-2xl text-left border text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-3 active:scale-[0.99] glass-card hover:border-slate-400 dark:hover:border-slate-600 text-slate-800 dark:text-slate-200";
+                
+                button.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-xl bg-slate-200/50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-extrabold shrink-0 shadow-sm text-xs border border-white/20">
+                            ${charLabel}
+                        </span>
+                        <span class="leading-snug font-semibold">${opt}</span>
+                    </div>
+                `;
+
+                if (quizMode === 'study') {
+                    if (studyAns) {
+                        button.disabled = true;
+                        if (opt === current.answer) {
+                            button.className = "w-full p-4 rounded-2xl text-left border text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-3 active:scale-[0.99] border-emerald-500 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300";
+                            button.innerHTML += `<span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shadow"><i class="fa-solid fa-check"></i></span>`;
+                        } else if (opt === studyAns.selectedOption) {
+                            button.className = "w-full p-4 rounded-2xl text-left border text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-3 active:scale-[0.99] border-rose-500 bg-rose-500/10 text-rose-800 dark:text-rose-300";
+                            button.innerHTML += `<span class="w-5 h-5 rounded-full bg-rose-500 text-white flex items-center justify-center text-[10px] shadow"><i class="fa-solid fa-xmark"></i></span>`;
+                        } else {
+                            button.className = "w-full p-4 rounded-2xl text-left border text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-3 active:scale-[0.99] border-slate-200/20 dark:border-slate-800/20 opacity-50";
+                        }
+                    } else {
+                        button.onclick = () => selectStudyOption(current.id, opt);
+                    }
+                } else {
+                    // Exam view styles
+                    if (examAns === opt) {
+                        button.className = "w-full p-4 rounded-2xl text-left border text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-3 active:scale-[0.99] border-amber-500 bg-amber-500/10 text-amber-800 dark:text-amber-300 shadow-sm";
+                        button.innerHTML += `<span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] shadow"><i class="fa-solid fa-check-double"></i></span>`;
+                    }
+                    button.onclick = () => selectExamOption(current.id, opt);
+                }
+
+                container.appendChild(button);
+            });
+
+            if (quizMode === 'study' && studyAns) {
+                explanationCard.style.display = 'flex';
+                document.getElementById('explanationTextDisplay').innerText = current.explain;
+            }
+        }
+
+        // Render Map
+        function renderQuestionMap() {
+            const container = document.getElementById('questionsMapContainer');
+            container.innerHTML = "";
+
+            activeQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "h-9 rounded-xl font-black text-xs transition-all flex items-center justify-center active:scale-90 shadow-sm";
+                btn.innerText = q.id;
+
+                const isCurrent = idx === currentIndex;
+                const studyAns = studyResults[q.id];
+                const examAns = examAnswers[q.id];
+
+                if (isCurrent) {
+                    btn.classList.add('ring-2', 'ring-indigo-400', 'scale-105', 'z-10');
+                }
+
+                if (quizMode === 'study') {
+                    if (studyAns) {
+                        if (studyAns.correct) {
+                            btn.classList.add('bg-emerald-500', 'text-white', 'hover:bg-emerald-600');
+                        } else {
+                            btn.classList.add('bg-rose-500', 'text-white', 'hover:bg-rose-600');
+                        }
+                    } else {
+                        btn.classList.add('bg-white/45', 'dark:bg-slate-800/30', 'text-slate-700', 'dark:text-slate-300', 'hover:bg-white/70', 'dark:hover:bg-slate-700/60');
+                    }
+                } else {
+                    if (examAns) {
+                        btn.classList.add('bg-amber-500', 'text-white', 'hover:bg-amber-600');
+                    } else {
+                        btn.classList.add('bg-white/45', 'dark:bg-slate-800/30', 'text-slate-700', 'dark:text-slate-300', 'hover:bg-white/70', 'dark:hover:bg-slate-700/60');
+                    }
+                }
+
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    renderQuiz();
+                    renderQuestionMap();
+                }
+
+                container.appendChild(btn);
+            });
+        }
+
+        // Selection Action Handler
+        function selectStudyOption(qId, selectedOpt) {
+            const q = rawQuestionsData.find(item => item.id === qId);
+            const isCorrect = q.answer === selectedOpt;
+            studyResults[qId] = {
+                correct: isCorrect,
+                selectedOption: selectedOpt
+            };
+
+            playQuizSound(isCorrect ? 'correct' : 'wrong');
+            saveStateToLocalStorage();
+            updateStats();
+            renderQuiz();
+            renderQuestionMap();
+            updateVocabTree();
+        }
+
+        // Exam Mode Option Selector
+        function selectExamOption(qId, selectedOpt) {
+            examAnswers[qId] = selectedOpt;
+            updateStats();
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        // Metrics calculations
+        function updateStats() {
+            let correct = 0;
+            let wrong = 0;
+            let totalAnswered = 0;
+
+            if (quizMode === 'study') {
+                rawQuestionsData.forEach(q => {
+                    if (studyResults[q.id]) {
+                        totalAnswered++;
+                        if (studyResults[q.id].correct) correct++;
+                        else wrong++;
+                    }
+                });
+            } else {
+                rawQuestionsData.forEach(q => {
+                    if (examAnswers[q.id]) {
+                        totalAnswered++;
+                        if (examAnswers[q.id] === q.answer) correct++;
+                        else wrong++;
+                    }
+                });
+            }
+
+            document.getElementById('correctCountText').innerText = correct;
+            document.getElementById('wrongCountText').innerText = wrong;
+            document.getElementById('answeredRatioText').innerText = `Yechildi: ${totalAnswered} / ${rawQuestionsData.length}`;
+            
+            const percent = totalAnswered > 0 ? Math.round((totalAnswered / rawQuestionsData.length) * 100) : 0;
+            document.getElementById('progressBarPercentage').innerText = `${percent}%`;
+            document.getElementById('progressBarFill').style.width = `${percent}%`;
+
+            document.getElementById('bookmarkCountText').innerText = bookmarkedQuestionIds.length;
+        }
+
+        // Interactive Vocabulary Tree Growth Logic
+        function updateVocabTree() {
+            let correct = 0;
+            rawQuestionsData.forEach(q => {
+                if (studyResults[q.id] && studyResults[q.id].correct) correct++;
+            });
+
+            const leaves = document.querySelectorAll('#treeLeavesGroup circle');
+            const status = document.getElementById('treeStatusText');
+
+            if (correct === 0) {
+                leaves.forEach(l => l.setAttribute('fill', '#cbd5e1'));
+                status.innerText = "Ko'chat holatida";
+            } else if (correct < 10) {
+                leaves[0].setAttribute('fill', '#10b981');
+                status.innerText = "Kurtak yozmoqda";
+            } else if (correct < 30) {
+                leaves[0].setAttribute('fill', '#10b981');
+                leaves[1].setAttribute('fill', '#10b981');
+                leaves[2].setAttribute('fill', '#059669');
+                status.innerText = "Yashil novda";
+            } else if (correct < 80) {
+                leaves.forEach((l, i) => {
+                    if (i < 4) l.setAttribute('fill', '#059669');
+                });
+                status.innerText = "Meva bermoqda";
+            } else {
+                leaves.forEach(l => l.setAttribute('fill', '#047857'));
+                status.innerText = "Buyuk Chinor!";
+            }
+        }
+
+        // Prev & Next navigation
+        function navigateToQuestion(direction) {
+            if (activeQuestions.length === 0) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = activeQuestions.length - 1;
+            if (currentIndex >= activeQuestions.length) currentIndex = 0;
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        // Toggle bookmarks (Yulduzcha)
+        function toggleBookmarkActiveQuestion() {
+            if (activeQuestions.length === 0) return;
+            const current = activeQuestions[currentIndex];
+            const idxInBookmarks = bookmarkedQuestionIds.indexOf(current.id);
+
+            if (idxInBookmarks > -1) {
+                bookmarkedQuestionIds.splice(idxInBookmarks, 1);
+            } else {
+                bookmarkedQuestionIds.push(current.id);
+            }
+
+            saveStateToLocalStorage();
+            renderQuiz();
+            updateStats();
+        }
+
+        // Clears current state (Tozalash)
+        function resetQuizState() {
+            const confirmReset = confirm("Barcha belgilangan test natijalarini tozalab yuborishni xohlaysizmi?");
+            if (confirmReset) {
+                studyResults = {};
+                examAnswers = {};
+                try {
+                    localStorage.removeItem('lingo_study_results');
+                } catch (e) {}
+                updateStats();
+                renderQuiz();
+                renderQuestionMap();
+                updateVocabTree();
+            }
+        }
+
+        // Finish exam prompt inside modal dialog
+        function finishExamPrompt() {
+            const answeredCount = Object.keys(examAnswers).length;
+            const confirmed = confirm(`Jami ${rawQuestionsData.length} ta savoldan ${answeredCount} tasiga javob berdingiz. Imtihonni topshirishni tasdiqlaysizmi?`);
+            if (confirmed) {
+                finishExam();
+            }
+        }
+
+        function finishExam() {
+            clearInterval(examTimerInterval);
+            
+            let correct = 0;
+            let wrong = 0;
+            rawQuestionsData.forEach(q => {
+                const ans = examAnswers[q.id];
+                if (ans) {
+                    if (ans === q.answer) correct++;
+                    else wrong++;
+                }
+            });
+
+            const total = rawQuestionsData.length;
+            const percent = Math.round((correct / total) * 100);
+
+            // Populate Modal values
+            document.getElementById('modalTotalAnswered').innerText = Object.keys(examAnswers).length;
+            document.getElementById('modalCorrect').innerText = correct;
+            document.getElementById('modalIncorrect').innerText = wrong;
+            document.getElementById('modalPercentText').innerText = `To'g'ri ko'rsatkich: ${percent}%`;
+            document.getElementById('modalPercentBar').style.width = `${percent}%`;
+
+            let gradingText = "";
+            if (percent >= 86) {
+                gradingText = "A'LO! Ingliz tili va leksikologiya qoidalari bo'yicha mukammal bilimga egasiz. Barcha ibora, sinonim va grammatik normalarni a'lo darajada o'zlashtirganingiz tasdiqlandi!";
+            } else if (percent >= 71) {
+                gradingText = "YAXSHI. Savollarning katta qismiga mantiqiy va to'g'ri javob berdingiz. Leksikologiya tushunchalarini yaxshi bilasiz.";
+            } else if (percent >= 55) {
+                gradingText = "QONIQLARLI. O'tish chegarasidan muvaffaqiyatli o'tdingiz. Lekin iboralar va ko'chma ma'nolarni yana bir bor takrorlash foydali bo'ladi.";
+            } else {
+                gradingText = "QONIQARSIZ. Afsuski, yetarli natija qayd etilmadi. O'rganish rejimiga qaytib, tushuntirish va darslik izohlari ustida mukammal qayta ishlang.";
+            }
+            document.getElementById('modalGradeText').innerText = gradingText;
+
+            // Show results modal
+            document.getElementById('examResultModal').classList.remove('hidden');
+        }
+
+        function reviewExamAnswers() {
+            rawQuestionsData.forEach(q => {
+                const ans = examAnswers[q.id];
+                if (ans) {
+                    studyResults[q.id] = {
+                        correct: ans === q.answer,
+                        selectedOption: ans
+                    };
+                }
+            });
+            saveStateToLocalStorage();
+            document.getElementById('examResultModal').classList.add('hidden');
+            changeQuizMode('study');
+        }
+
+        function closeModalAndReset() {
+            document.getElementById('examResultModal').classList.add('hidden');
+            studyResults = {};
+            examAnswers = {};
+            try {
+                localStorage.removeItem('lingo_study_results');
+            } catch (e) {}
+            changeQuizMode('study');
+        }
+
+        // Theme management - Default to light mode as requested
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                try {
+                    localStorage.setItem('theme', 'light');
+                } catch (e) {}
+            } else {
+                html.classList.add('dark');
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (e) {}
+            }
+            updateThemeToggleButton();
+        }
+
+        function updateThemeToggleButton() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                icon.className = "fa-solid fa-sun text-amber-400";
+            } else {
+                icon.className = "fa-solid fa-moon text-slate-700";
+            }
+        }
+
+        // Web Audio API Synthesizer (Tovush effektlari)
+        let audioCtx = null;
+        function playQuizSound(type) {
+            try {
+                if (!audioCtx) {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContextClass) {
+                        audioCtx = new AudioContextClass();
+                    }
+                }
+                if (!audioCtx) return;
+
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08); // E5
+                    osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.16); // G5
+                    gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.35);
+                } else if (type === 'wrong') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(196.00, audioCtx.currentTime); // G3
+                    osc.frequency.setValueAtTime(146.83, audioCtx.currentTime + 0.12); // D3
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.45);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                }
+            } catch (err) {
+                // Ignore silently
+            }
+        }
+
+        // Interactive Whiteboard logic
+        let canvas = null;
+        let ctx = null;
+        let isDrawing = false;
+        let drawColor = '#6366f1';
+        let brushSize = 3;
+
+        function initScratchpad() {
+            canvas = document.getElementById('scratchpadCanvas');
+            ctx = canvas.getContext('2d');
+            
+            // Set scale size
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Desktop events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Mobile events
+            canvas.addEventListener('touchstart', startDrawingMobile, { passive: false });
+            canvas.addEventListener('touchmove', drawMobile, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+
+            document.getElementById('brushSizeSlider').addEventListener('input', function(e) {
+                brushSize = e.target.value;
+            });
+        }
+
+        function resizeCanvas() {
+            const rect = canvas.parentNode.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            clearScratchpadSilently();
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            document.getElementById('scratchpadHint').classList.add('hidden');
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = drawColor;
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+
+        function startDrawingMobile(e) {
+            e.preventDefault();
+            isDrawing = true;
+            document.getElementById('scratchpadHint').classList.add('hidden');
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            ctx.beginPath();
+            ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+        }
+
+        function drawMobile(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = drawColor;
+            ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.closePath();
+        }
+
+        function clearScratchpad() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('scratchpadHint').classList.remove('hidden');
+        }
+
+        function clearScratchpadSilently() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function setScratchpadColor(color) {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (color === 'eraser') {
+                drawColor = isDark ? '#090d16' : '#ffffff';
+                document.getElementById('eraseColorBtn').classList.add('bg-indigo-200');
+            } else {
+                drawColor = color;
+                document.getElementById('eraseColorBtn').classList.remove('bg-indigo-200');
+            }
+        }
+
+        // Initial Theme Configuration: Defaults always to Light mode
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        } catch (e) {
+            document.documentElement.classList.remove('dark');
+        }
+
+        window.onload = function() {
+            updateThemeToggleButton();
+            loadStateFromLocalStorage();
+            initializeQuestions();
+            filterQuestions(); 
+            initScratchpad();
+            updateVocabTree();
+        }
+    </script>
+</body>
+</html>
